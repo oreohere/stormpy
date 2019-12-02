@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Reward Models &#8212; stormpy 1.3.0 documentation</title>
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Working with Schedulers" href="schedulers.html" />
+    <link rel="prev" title="Exploring Models" href="exploration.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js "></script>
+<script type="text/javascript" src="../_static/js/jquery-fix.js "></script>
+<script type="text/javascript" src="../_static/bootstrap-3.3.7/js/bootstrap.min.js "></script>
+<script type="text/javascript" src="../_static/bootstrap-sphinx.js "></script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-inverse navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html">
+          Stormpy</a>
+        <span class="navbar-text navbar-version pull-left"><b>1.3.0</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+                <li><a href="http://stormchecker.org">Storm</a></li>
+                <li><a href="https://github.com/moves-rwth/stormpy">Github</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../index.html">Stormpy <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../installation.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation.html#installation-steps">Installation Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started.html">Getting Started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started.html#a-quick-tour-through-stormpy">A Quick Tour through Stormpy</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../advanced_topics.html">Advanced Examples</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="analysis.html">Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="building_models.html">Building Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="engines.html">Engines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="exploration.html">Exploring Models</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Reward Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="schedulers.html">Working with Schedulers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="shortest_paths.html">Working with Shortest Paths</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parametric_models.html">Parametric Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dfts.html">Dynamic Fault Trees</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../contributors.html">Contributors</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Modules:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../api/core.html">Stormpy.core</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/info.html">Stormpy.info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/exceptions.html">Stormpy.exceptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/logic.html">Stormpy.logic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/storage.html">Stormpy.storage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/utility.html">Stormpy.utility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/dft.html">Stormpy.dft</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/pars.html">Stormpy.pars</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">Reward Models</a><ul>
+<li><a class="reference internal" href="#exploring-reward-models">Exploring reward models</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="exploration.html" title="Previous Chapter: Exploring Models"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Exploring Models</span>
+    </a>
+  </li>
+  <li>
+    <a href="schedulers.html" title="Next Chapter: Working with Schedulers"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Working with ... &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="body col-md-12 content" role="main">
+      
+  <div class="section" id="reward-models">
+<h1>Reward Models<a class="headerlink" href="#reward-models" title="Permalink to this headline">¶</a></h1>
+<p>In <a class="reference internal" href="../getting_started.html"><span class="doc">Getting Started</span></a>, we mainly looked at probabilities in the Markov models and properties that refer to these probabilities.
+In this section, we discuss reward models.</p>
+<div class="section" id="exploring-reward-models">
+<h2>Exploring reward models<a class="headerlink" href="#exploring-reward-models" title="Permalink to this headline">¶</a></h2>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference external" href="https://github.com/moves-rwth/stormpy/blob/master/examples/reward_models/01-reward-models.py">01-reward-models.py</a></p>
+</div>
+<p>We consider the die again, but with another property which talks about the expected reward:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">stormpy</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">stormpy.examples</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">stormpy.examples.files</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">program</span> <span class="o">=</span> <span class="n">stormpy</span><span class="o">.</span><span class="n">parse_prism_program</span><span class="p">(</span><span class="n">stormpy</span><span class="o">.</span><span class="n">examples</span><span class="o">.</span><span class="n">files</span><span class="o">.</span><span class="n">prism_dtmc_die</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span> <span class="o">=</span> <span class="s2">&quot;R=? [F </span><span class="se">\&quot;</span><span class="s2">done</span><span class="se">\&quot;</span><span class="s2">]&quot;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">properties</span> <span class="o">=</span> <span class="n">stormpy</span><span class="o">.</span><span class="n">parse_properties</span><span class="p">(</span><span class="n">prop</span><span class="p">,</span> <span class="n">program</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">model</span> <span class="o">=</span> <span class="n">stormpy</span><span class="o">.</span><span class="n">build_model</span><span class="p">(</span><span class="n">program</span><span class="p">,</span> <span class="n">properties</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">reward_models</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p>The model now has a reward model, as the property talks about rewards.
+When <a class="reference internal" href="building_models.html"><span class="doc">Building Models</span></a> from explicit sources, the reward model is always included if it is defined in the source.
+We can do model checking analogous to probabilities:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">initial_state</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">initial_states</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">result</span> <span class="o">=</span> <span class="n">stormpy</span><span class="o">.</span><span class="n">model_checking</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">properties</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Result: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">at</span><span class="p">(</span><span class="n">initial_state</span><span class="p">)))</span>
+<span class="go">Result: 3.666666666666667</span>
+</pre></div>
+</div>
+<p>The reward model has a name which we can obtain as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">reward_model_name</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">reward_models</span><span class="o">.</span><span class="n">keys</span><span class="p">())[</span><span class="mi">0</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">reward_model_name</span><span class="p">)</span>
+<span class="go">coin_flips</span>
+</pre></div>
+</div>
+<p>We discuss later how to work with multiple reward models.
+Rewards come in multiple fashions, as state rewards, state-action rewards and as transition rewards.
+In this example, we only have state-action rewards. These rewards are a vector, over which we can trivially iterate:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">assert</span> <span class="ow">not</span> <span class="n">model</span><span class="o">.</span><span class="n">reward_models</span><span class="p">[</span><span class="n">reward_model_name</span><span class="p">]</span><span class="o">.</span><span class="n">has_state_rewards</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">assert</span> <span class="n">model</span><span class="o">.</span><span class="n">reward_models</span><span class="p">[</span><span class="n">reward_model_name</span><span class="p">]</span><span class="o">.</span><span class="n">has_state_action_rewards</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">assert</span> <span class="ow">not</span> <span class="n">model</span><span class="o">.</span><span class="n">reward_models</span><span class="p">[</span><span class="n">reward_model_name</span><span class="p">]</span><span class="o">.</span><span class="n">has_transition_rewards</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">reward</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">reward_models</span><span class="p">[</span><span class="n">reward_model_name</span><span class="p">]</span><span class="o">.</span><span class="n">state_action_rewards</span><span class="p">:</span>
+<span class="gp">... </span>   <span class="nb">print</span><span class="p">(</span><span class="n">reward</span><span class="p">)</span>
+<span class="go">1.0</span>
+<span class="go">1.0</span>
+<span class="go">1.0</span>
+<span class="go">1.0</span>
+<span class="go">1.0</span>
+<span class="go">1.0</span>
+<span class="go">1.0</span>
+<span class="go">0.0</span>
+<span class="go">0.0</span>
+<span class="go">0.0</span>
+<span class="go">0.0</span>
+<span class="go">0.0</span>
+<span class="go">0.0</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+        <br/>
+        
+<div id="sourcelink">
+  <a href="../_sources/doc/reward_models.rst.txt"
+     rel="nofollow">Source</a>
+</div>
+      
+    </p>
+    <p>
+        &copy; Copyright 2016-2019 Moves RWTH Aachen.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.2.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

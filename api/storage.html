@@ -1,0 +1,2360 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Stormpy.storage &#8212; stormpy 1.3.0 documentation</title>
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Stormpy.utility" href="utility.html" />
+    <link rel="prev" title="Stormpy.logic" href="logic.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js "></script>
+<script type="text/javascript" src="../_static/js/jquery-fix.js "></script>
+<script type="text/javascript" src="../_static/bootstrap-3.3.7/js/bootstrap.min.js "></script>
+<script type="text/javascript" src="../_static/bootstrap-sphinx.js "></script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-inverse navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html">
+          Stormpy</a>
+        <span class="navbar-text navbar-version pull-left"><b>1.3.0</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+                <li><a href="http://stormchecker.org">Storm</a></li>
+                <li><a href="https://github.com/moves-rwth/stormpy">Github</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../index.html">Stormpy <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../installation.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation.html#installation-steps">Installation Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started.html">Getting Started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started.html#a-quick-tour-through-stormpy">A Quick Tour through Stormpy</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced_topics.html">Advanced Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../doc/analysis.html">Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../doc/building_models.html">Building Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../doc/engines.html">Engines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../doc/exploration.html">Exploring Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../doc/reward_models.html">Reward Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../doc/schedulers.html">Working with Schedulers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../doc/shortest_paths.html">Working with Shortest Paths</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../doc/parametric_models.html">Parametric Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../doc/dfts.html">Dynamic Fault Trees</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../contributors.html">Contributors</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Modules:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="core.html">Stormpy.core</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info.html">Stormpy.info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exceptions.html">Stormpy.exceptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logic.html">Stormpy.logic</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Stormpy.storage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utility.html">Stormpy.utility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dft.html">Stormpy.dft</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pars.html">Stormpy.pars</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">Stormpy.storage</a></li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="logic.html" title="Previous Chapter: Stormpy.logic"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Stormpy.logic</span>
+    </a>
+  </li>
+  <li>
+    <a href="utility.html" title="Next Chapter: Stormpy.utility"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Stormpy.utility &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="body col-md-12 content" role="main">
+      
+  <div class="section" id="module-stormpy.storage">
+<span id="stormpy-storage"></span><h1>Stormpy.storage<a class="headerlink" href="#module-stormpy.storage" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="stormpy.storage.BitVector">
+<em class="property">class </em><code class="sig-name descname">BitVector</code><a class="headerlink" href="#stormpy.storage.BitVector" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="stormpy.storage.BitVector.get">
+<code class="sig-name descname">get</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.BitVector.get" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.BitVector.number_of_set_bits">
+<code class="sig-name descname">number_of_set_bits</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.BitVector.number_of_set_bits" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.BitVector.set">
+<code class="sig-name descname">set</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.BitVector.set" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.BitVector.size">
+<code class="sig-name descname">size</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.BitVector.size" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="stormpy.storage.ChoiceLabeling">
+<em class="property">class </em><code class="sig-name descname">ChoiceLabeling</code><a class="headerlink" href="#stormpy.storage.ChoiceLabeling" title="Permalink to this definition">¶</a></dt>
+<dd><p>Labeling for choices</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="stormpy.storage.ChoiceOrigins">
+<em class="property">class </em><code class="sig-name descname">ChoiceOrigins</code><a class="headerlink" href="#stormpy.storage.ChoiceOrigins" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class represents the origin of choices of a model in terms of the input model spec.</p>
+<dl class="method">
+<dt id="stormpy.storage.ChoiceOrigins.get_choice_info">
+<code class="sig-name descname">get_choice_info</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.ChoiceOrigins.get_choice_info" title="Permalink to this definition">¶</a></dt>
+<dd><p>human readable string</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.ChoiceOrigins.get_identifier_info">
+<code class="sig-name descname">get_identifier_info</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.ChoiceOrigins.get_identifier_info" title="Permalink to this definition">¶</a></dt>
+<dd><p>human readable string</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="stormpy.storage.Constant">
+<em class="property">class </em><code class="sig-name descname">Constant</code><a class="headerlink" href="#stormpy.storage.Constant" title="Permalink to this definition">¶</a></dt>
+<dd><p>A constant in a Prism program</p>
+<dl class="method">
+<dt id="stormpy.storage.Constant.defined">
+<em class="property">property </em><code class="sig-name descname">defined</code><a class="headerlink" href="#stormpy.storage.Constant.defined" title="Permalink to this definition">¶</a></dt>
+<dd><p>Is the constant defined?</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.Constant.expression_variable">
+<em class="property">property </em><code class="sig-name descname">expression_variable</code><a class="headerlink" href="#stormpy.storage.Constant.expression_variable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Expression variable</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.Constant.name">
+<em class="property">property </em><code class="sig-name descname">name</code><a class="headerlink" href="#stormpy.storage.Constant.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constant name</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.Constant.type">
+<em class="property">property </em><code class="sig-name descname">type</code><a class="headerlink" href="#stormpy.storage.Constant.type" title="Permalink to this definition">¶</a></dt>
+<dd><p>The type of the constant</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="stormpy.storage.DistributionDouble">
+<em class="property">class </em><code class="sig-name descname">DistributionDouble</code><a class="headerlink" href="#stormpy.storage.DistributionDouble" title="Permalink to this definition">¶</a></dt>
+<dd><p>Finite Support Distribution</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="stormpy.storage.Expression">
+<em class="property">class </em><code class="sig-name descname">Expression</code><a class="headerlink" href="#stormpy.storage.Expression" title="Permalink to this definition">¶</a></dt>
+<dd><p>Holds an expression</p>
+<dl class="method">
+<dt id="stormpy.storage.Expression.And">
+<code class="sig-name descname">And</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.Expression.And" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.Expression.Eq">
+<code class="sig-name descname">Eq</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.Expression.Eq" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.Expression.Geq">
+<code class="sig-name descname">Geq</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.Expression.Geq" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.Expression.Greater">
+<code class="sig-name descname">Greater</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.Expression.Greater" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.Expression.Iff">
+<code class="sig-name descname">Iff</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.Expression.Iff" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.Expression.Implies">
+<code class="sig-name descname">Implies</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.Expression.Implies" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.Expression.Leq">
+<code class="sig-name descname">Leq</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.Expression.Leq" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.Expression.Less">
+<code class="sig-name descname">Less</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.Expression.Less" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.Expression.Minus">
+<code class="sig-name descname">Minus</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.Expression.Minus" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.Expression.Multiply">
+<code class="sig-name descname">Multiply</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.Expression.Multiply" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.Expression.Neq">
+<code class="sig-name descname">Neq</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.Expression.Neq" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.Expression.Or">
+<code class="sig-name descname">Or</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.Expression.Or" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.Expression.Plus">
+<code class="sig-name descname">Plus</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.Expression.Plus" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.Expression.arity">
+<em class="property">property </em><code class="sig-name descname">arity</code><a class="headerlink" href="#stormpy.storage.Expression.arity" title="Permalink to this definition">¶</a></dt>
+<dd><p>The arity of the expression</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.Expression.contains_variable">
+<code class="sig-name descname">contains_variable</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.Expression.contains_variable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if the expression contains any of the given variables.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.Expression.contains_variables">
+<code class="sig-name descname">contains_variables</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.Expression.contains_variables" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if the expression contains variables.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.Expression.evaluate_as_bool">
+<code class="sig-name descname">evaluate_as_bool</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.Expression.evaluate_as_bool" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the boolean value this expression evaluates to</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.Expression.evaluate_as_double">
+<code class="sig-name descname">evaluate_as_double</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.Expression.evaluate_as_double" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the double value this expression evaluates to</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.Expression.evaluate_as_int">
+<code class="sig-name descname">evaluate_as_int</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.Expression.evaluate_as_int" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the integer value this expression evaluates to</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.Expression.evaluate_as_rational">
+<code class="sig-name descname">evaluate_as_rational</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.Expression.evaluate_as_rational" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the rational number this expression evaluates to</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.Expression.get_operand">
+<code class="sig-name descname">get_operand</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.Expression.get_operand" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the operand at the given index</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.Expression.get_variables">
+<code class="sig-name descname">get_variables</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.Expression.get_variables" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the variables</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.Expression.has_boolean_type">
+<code class="sig-name descname">has_boolean_type</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.Expression.has_boolean_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if the expression is a boolean</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.Expression.has_integer_type">
+<code class="sig-name descname">has_integer_type</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.Expression.has_integer_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if the expression is an integer</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.Expression.has_rational_type">
+<code class="sig-name descname">has_rational_type</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.Expression.has_rational_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if the expression is a rational</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.Expression.identifier">
+<code class="sig-name descname">identifier</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.Expression.identifier" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieves the identifier associated with this expression if this expression is a variable</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.Expression.is_function_application">
+<em class="property">property </em><code class="sig-name descname">is_function_application</code><a class="headerlink" href="#stormpy.storage.Expression.is_function_application" title="Permalink to this definition">¶</a></dt>
+<dd><p>True iff the expression is a function application (of any sort</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.Expression.is_literal">
+<code class="sig-name descname">is_literal</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.Expression.is_literal" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if the expression is a literal</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.Expression.is_variable">
+<code class="sig-name descname">is_variable</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.Expression.is_variable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if the expression is a variable</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.Expression.manager">
+<em class="property">property </em><code class="sig-name descname">manager</code><a class="headerlink" href="#stormpy.storage.Expression.manager" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the manager</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.Expression.operator">
+<em class="property">property </em><code class="sig-name descname">operator</code><a class="headerlink" href="#stormpy.storage.Expression.operator" title="Permalink to this definition">¶</a></dt>
+<dd><p>The operator of the expression (if it is a function application)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.Expression.substitute">
+<code class="sig-name descname">substitute</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.Expression.substitute" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.Expression.type">
+<em class="property">property </em><code class="sig-name descname">type</code><a class="headerlink" href="#stormpy.storage.Expression.type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the Type</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="stormpy.storage.ExpressionManager">
+<em class="property">class </em><code class="sig-name descname">ExpressionManager</code><a class="headerlink" href="#stormpy.storage.ExpressionManager" title="Permalink to this definition">¶</a></dt>
+<dd><p>Manages variables for expressions</p>
+<dl class="method">
+<dt id="stormpy.storage.ExpressionManager.create_boolean">
+<code class="sig-name descname">create_boolean</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.ExpressionManager.create_boolean" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create expression from boolean</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.ExpressionManager.create_boolean_variable">
+<code class="sig-name descname">create_boolean_variable</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.ExpressionManager.create_boolean_variable" title="Permalink to this definition">¶</a></dt>
+<dd><p>create Boolean variable</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.ExpressionManager.create_integer">
+<code class="sig-name descname">create_integer</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.ExpressionManager.create_integer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create expression from integer number</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.ExpressionManager.create_integer_variable">
+<code class="sig-name descname">create_integer_variable</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.ExpressionManager.create_integer_variable" title="Permalink to this definition">¶</a></dt>
+<dd><p>create Integer variable</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.ExpressionManager.create_rational">
+<code class="sig-name descname">create_rational</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.ExpressionManager.create_rational" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create expression from rational number</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.ExpressionManager.create_rational_variable">
+<code class="sig-name descname">create_rational_variable</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.ExpressionManager.create_rational_variable" title="Permalink to this definition">¶</a></dt>
+<dd><p>create Rational variable</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="stormpy.storage.ExpressionParser">
+<em class="property">class </em><code class="sig-name descname">ExpressionParser</code><a class="headerlink" href="#stormpy.storage.ExpressionParser" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parser for storm-expressions</p>
+<dl class="method">
+<dt id="stormpy.storage.ExpressionParser.parse">
+<code class="sig-name descname">parse</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.ExpressionParser.parse" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.ExpressionParser.set_identifier_mapping">
+<code class="sig-name descname">set_identifier_mapping</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.ExpressionParser.set_identifier_mapping" title="Permalink to this definition">¶</a></dt>
+<dd><p>sets identifiers</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="stormpy.storage.ExpressionType">
+<em class="property">class </em><code class="sig-name descname">ExpressionType</code><a class="headerlink" href="#stormpy.storage.ExpressionType" title="Permalink to this definition">¶</a></dt>
+<dd><p>The type of an expression</p>
+<dl class="method">
+<dt id="stormpy.storage.ExpressionType.is_boolean">
+<em class="property">property </em><code class="sig-name descname">is_boolean</code><a class="headerlink" href="#stormpy.storage.ExpressionType.is_boolean" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.ExpressionType.is_integer">
+<em class="property">property </em><code class="sig-name descname">is_integer</code><a class="headerlink" href="#stormpy.storage.ExpressionType.is_integer" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.ExpressionType.is_rational">
+<em class="property">property </em><code class="sig-name descname">is_rational</code><a class="headerlink" href="#stormpy.storage.ExpressionType.is_rational" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="stormpy.storage.ItemLabeling">
+<em class="property">class </em><code class="sig-name descname">ItemLabeling</code><a class="headerlink" href="#stormpy.storage.ItemLabeling" title="Permalink to this definition">¶</a></dt>
+<dd><p>Labeling</p>
+<dl class="method">
+<dt id="stormpy.storage.ItemLabeling.add_label">
+<code class="sig-name descname">add_label</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.ItemLabeling.add_label" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add label</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.ItemLabeling.contains_label">
+<code class="sig-name descname">contains_label</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.ItemLabeling.contains_label" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if the given label is contained in the labeling</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.ItemLabeling.get_labels">
+<code class="sig-name descname">get_labels</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.ItemLabeling.get_labels" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get all labels</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="stormpy.storage.JaniAssignment">
+<em class="property">class </em><code class="sig-name descname">JaniAssignment</code><a class="headerlink" href="#stormpy.storage.JaniAssignment" title="Permalink to this definition">¶</a></dt>
+<dd><p>Jani Assignment</p>
+<dl class="method">
+<dt id="stormpy.storage.JaniAssignment.expression">
+<em class="property">property </em><code class="sig-name descname">expression</code><a class="headerlink" href="#stormpy.storage.JaniAssignment.expression" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="stormpy.storage.JaniAutomaton">
+<em class="property">class </em><code class="sig-name descname">JaniAutomaton</code><a class="headerlink" href="#stormpy.storage.JaniAutomaton" title="Permalink to this definition">¶</a></dt>
+<dd><p>A Jani Automation</p>
+<dl class="method">
+<dt id="stormpy.storage.JaniAutomaton.add_edge">
+<code class="sig-name descname">add_edge</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.JaniAutomaton.add_edge" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.JaniAutomaton.add_initial_location">
+<code class="sig-name descname">add_initial_location</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.JaniAutomaton.add_initial_location" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.JaniAutomaton.add_location">
+<code class="sig-name descname">add_location</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.JaniAutomaton.add_location" title="Permalink to this definition">¶</a></dt>
+<dd><p>adds a new location, returns the index</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.JaniAutomaton.edges">
+<em class="property">property </em><code class="sig-name descname">edges</code><a class="headerlink" href="#stormpy.storage.JaniAutomaton.edges" title="Permalink to this definition">¶</a></dt>
+<dd><p>get edges</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.JaniAutomaton.initial_location_indices">
+<em class="property">property </em><code class="sig-name descname">initial_location_indices</code><a class="headerlink" href="#stormpy.storage.JaniAutomaton.initial_location_indices" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.JaniAutomaton.initial_states_restriction">
+<em class="property">property </em><code class="sig-name descname">initial_states_restriction</code><a class="headerlink" href="#stormpy.storage.JaniAutomaton.initial_states_restriction" title="Permalink to this definition">¶</a></dt>
+<dd><p>initial state restriction</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.JaniAutomaton.location_variable">
+<em class="property">property </em><code class="sig-name descname">location_variable</code><a class="headerlink" href="#stormpy.storage.JaniAutomaton.location_variable" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.JaniAutomaton.locations">
+<em class="property">property </em><code class="sig-name descname">locations</code><a class="headerlink" href="#stormpy.storage.JaniAutomaton.locations" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.JaniAutomaton.name">
+<em class="property">property </em><code class="sig-name descname">name</code><a class="headerlink" href="#stormpy.storage.JaniAutomaton.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.JaniAutomaton.variables">
+<em class="property">property </em><code class="sig-name descname">variables</code><a class="headerlink" href="#stormpy.storage.JaniAutomaton.variables" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="stormpy.storage.JaniBoundedIntegerVariable">
+<em class="property">class </em><code class="sig-name descname">JaniBoundedIntegerVariable</code><a class="headerlink" href="#stormpy.storage.JaniBoundedIntegerVariable" title="Permalink to this definition">¶</a></dt>
+<dd><p>A Bounded Integer</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="stormpy.storage.JaniChoiceOrigins">
+<em class="property">class </em><code class="sig-name descname">JaniChoiceOrigins</code><a class="headerlink" href="#stormpy.storage.JaniChoiceOrigins" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class represents for each choice the origin in the jani spec.</p>
+<dl class="method">
+<dt id="stormpy.storage.JaniChoiceOrigins.get_edge_index_set">
+<code class="sig-name descname">get_edge_index_set</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.JaniChoiceOrigins.get_edge_index_set" title="Permalink to this definition">¶</a></dt>
+<dd><p>returns the set of edges that induced the choice</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.JaniChoiceOrigins.model">
+<em class="property">property </em><code class="sig-name descname">model</code><a class="headerlink" href="#stormpy.storage.JaniChoiceOrigins.model" title="Permalink to this definition">¶</a></dt>
+<dd><p>retrieves the associated JANI model</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="stormpy.storage.JaniConstant">
+<em class="property">class </em><code class="sig-name descname">JaniConstant</code><a class="headerlink" href="#stormpy.storage.JaniConstant" title="Permalink to this definition">¶</a></dt>
+<dd><p>A Constant in JANI</p>
+<dl class="method">
+<dt id="stormpy.storage.JaniConstant.defined">
+<em class="property">property </em><code class="sig-name descname">defined</code><a class="headerlink" href="#stormpy.storage.JaniConstant.defined" title="Permalink to this definition">¶</a></dt>
+<dd><p>is constant defined by some expression</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.JaniConstant.expression_variable">
+<em class="property">property </em><code class="sig-name descname">expression_variable</code><a class="headerlink" href="#stormpy.storage.JaniConstant.expression_variable" title="Permalink to this definition">¶</a></dt>
+<dd><p>expression variable for this constant</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.JaniConstant.name">
+<em class="property">property </em><code class="sig-name descname">name</code><a class="headerlink" href="#stormpy.storage.JaniConstant.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>name of constant</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.JaniConstant.type">
+<em class="property">property </em><code class="sig-name descname">type</code><a class="headerlink" href="#stormpy.storage.JaniConstant.type" title="Permalink to this definition">¶</a></dt>
+<dd><p>type of constant</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="stormpy.storage.JaniEdge">
+<em class="property">class </em><code class="sig-name descname">JaniEdge</code><a class="headerlink" href="#stormpy.storage.JaniEdge" title="Permalink to this definition">¶</a></dt>
+<dd><p>A Jani Edge</p>
+<dl class="method">
+<dt id="stormpy.storage.JaniEdge.action_index">
+<em class="property">property </em><code class="sig-name descname">action_index</code><a class="headerlink" href="#stormpy.storage.JaniEdge.action_index" title="Permalink to this definition">¶</a></dt>
+<dd><p>action index</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.JaniEdge.color">
+<em class="property">property </em><code class="sig-name descname">color</code><a class="headerlink" href="#stormpy.storage.JaniEdge.color" title="Permalink to this definition">¶</a></dt>
+<dd><p>color for the edge</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.JaniEdge.destinations">
+<em class="property">property </em><code class="sig-name descname">destinations</code><a class="headerlink" href="#stormpy.storage.JaniEdge.destinations" title="Permalink to this definition">¶</a></dt>
+<dd><p>edge destinations</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.JaniEdge.guard">
+<em class="property">property </em><code class="sig-name descname">guard</code><a class="headerlink" href="#stormpy.storage.JaniEdge.guard" title="Permalink to this definition">¶</a></dt>
+<dd><p>edge guard</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.JaniEdge.has_silent_action">
+<code class="sig-name descname">has_silent_action</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.JaniEdge.has_silent_action" title="Permalink to this definition">¶</a></dt>
+<dd><p>Is the edge labelled with the silent action</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.JaniEdge.nr_destinations">
+<em class="property">property </em><code class="sig-name descname">nr_destinations</code><a class="headerlink" href="#stormpy.storage.JaniEdge.nr_destinations" title="Permalink to this definition">¶</a></dt>
+<dd><p>nr edge destinations</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.JaniEdge.rate">
+<em class="property">property </em><code class="sig-name descname">rate</code><a class="headerlink" href="#stormpy.storage.JaniEdge.rate" title="Permalink to this definition">¶</a></dt>
+<dd><p>edge rate</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.JaniEdge.source_location_index">
+<em class="property">property </em><code class="sig-name descname">source_location_index</code><a class="headerlink" href="#stormpy.storage.JaniEdge.source_location_index" title="Permalink to this definition">¶</a></dt>
+<dd><p>index for source location</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.JaniEdge.substitute">
+<code class="sig-name descname">substitute</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.JaniEdge.substitute" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.JaniEdge.template_edge">
+<em class="property">property </em><code class="sig-name descname">template_edge</code><a class="headerlink" href="#stormpy.storage.JaniEdge.template_edge" title="Permalink to this definition">¶</a></dt>
+<dd><p>template edge</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="stormpy.storage.JaniEdgeDestination">
+<em class="property">class </em><code class="sig-name descname">JaniEdgeDestination</code><a class="headerlink" href="#stormpy.storage.JaniEdgeDestination" title="Permalink to this definition">¶</a></dt>
+<dd><p>Destination in Jani</p>
+<dl class="method">
+<dt id="stormpy.storage.JaniEdgeDestination.assignments">
+<em class="property">property </em><code class="sig-name descname">assignments</code><a class="headerlink" href="#stormpy.storage.JaniEdgeDestination.assignments" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.JaniEdgeDestination.probability">
+<em class="property">property </em><code class="sig-name descname">probability</code><a class="headerlink" href="#stormpy.storage.JaniEdgeDestination.probability" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.JaniEdgeDestination.target_location_index">
+<em class="property">property </em><code class="sig-name descname">target_location_index</code><a class="headerlink" href="#stormpy.storage.JaniEdgeDestination.target_location_index" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="stormpy.storage.JaniLocation">
+<em class="property">class </em><code class="sig-name descname">JaniLocation</code><a class="headerlink" href="#stormpy.storage.JaniLocation" title="Permalink to this definition">¶</a></dt>
+<dd><p>A Location in JANI</p>
+<dl class="method">
+<dt id="stormpy.storage.JaniLocation.assignments">
+<em class="property">property </em><code class="sig-name descname">assignments</code><a class="headerlink" href="#stormpy.storage.JaniLocation.assignments" title="Permalink to this definition">¶</a></dt>
+<dd><p>location assignments</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.JaniLocation.name">
+<em class="property">property </em><code class="sig-name descname">name</code><a class="headerlink" href="#stormpy.storage.JaniLocation.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>name of the location</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="stormpy.storage.JaniModel">
+<em class="property">class </em><code class="sig-name descname">JaniModel</code><a class="headerlink" href="#stormpy.storage.JaniModel" title="Permalink to this definition">¶</a></dt>
+<dd><p>A Jani Model</p>
+<dl class="method">
+<dt id="stormpy.storage.JaniModel.add_automaton">
+<code class="sig-name descname">add_automaton</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.JaniModel.add_automaton" title="Permalink to this definition">¶</a></dt>
+<dd><p>add an automaton (with a unique name)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.JaniModel.automata">
+<em class="property">property </em><code class="sig-name descname">automata</code><a class="headerlink" href="#stormpy.storage.JaniModel.automata" title="Permalink to this definition">¶</a></dt>
+<dd><p>get automata</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.JaniModel.check_valid">
+<code class="sig-name descname">check_valid</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.JaniModel.check_valid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Some basic checks to ensure validity</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.JaniModel.constants">
+<em class="property">property </em><code class="sig-name descname">constants</code><a class="headerlink" href="#stormpy.storage.JaniModel.constants" title="Permalink to this definition">¶</a></dt>
+<dd><p>get constants</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.JaniModel.decode_automaton_and_edge_index">
+<code class="sig-name descname">decode_automaton_and_edge_index</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.JaniModel.decode_automaton_and_edge_index" title="Permalink to this definition">¶</a></dt>
+<dd><p>get edge and automaton from edge/automaton index</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.JaniModel.define_constants">
+<code class="sig-name descname">define_constants</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.JaniModel.define_constants" title="Permalink to this definition">¶</a></dt>
+<dd><p>define constants with a mapping from the corresponding expression variables to expressions</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.JaniModel.encode_automaton_and_edge_index">
+<code class="sig-name descname">encode_automaton_and_edge_index</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.JaniModel.encode_automaton_and_edge_index" title="Permalink to this definition">¶</a></dt>
+<dd><p>get edge/automaton-index</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.JaniModel.expression_manager">
+<em class="property">property </em><code class="sig-name descname">expression_manager</code><a class="headerlink" href="#stormpy.storage.JaniModel.expression_manager" title="Permalink to this definition">¶</a></dt>
+<dd><p>get expression manager</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.JaniModel.finalize">
+<code class="sig-name descname">finalize</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.JaniModel.finalize" title="Permalink to this definition">¶</a></dt>
+<dd><p>finalizes the model. After this action, be careful changing the data structure.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.JaniModel.get_automaton_index">
+<code class="sig-name descname">get_automaton_index</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.JaniModel.get_automaton_index" title="Permalink to this definition">¶</a></dt>
+<dd><p>get index for automaton name</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.JaniModel.get_constant">
+<code class="sig-name descname">get_constant</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.JaniModel.get_constant" title="Permalink to this definition">¶</a></dt>
+<dd><p>get constant by name</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.JaniModel.global_variables">
+<em class="property">property </em><code class="sig-name descname">global_variables</code><a class="headerlink" href="#stormpy.storage.JaniModel.global_variables" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.JaniModel.has_standard_composition">
+<code class="sig-name descname">has_standard_composition</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.JaniModel.has_standard_composition" title="Permalink to this definition">¶</a></dt>
+<dd><p>is the composition the standard composition</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.JaniModel.has_undefined_constants">
+<em class="property">property </em><code class="sig-name descname">has_undefined_constants</code><a class="headerlink" href="#stormpy.storage.JaniModel.has_undefined_constants" title="Permalink to this definition">¶</a></dt>
+<dd><p>Flag if program has undefined constants</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.JaniModel.initial_states_restriction">
+<em class="property">property </em><code class="sig-name descname">initial_states_restriction</code><a class="headerlink" href="#stormpy.storage.JaniModel.initial_states_restriction" title="Permalink to this definition">¶</a></dt>
+<dd><p>initial states restriction</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.JaniModel.make_standard_compliant">
+<code class="sig-name descname">make_standard_compliant</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.JaniModel.make_standard_compliant" title="Permalink to this definition">¶</a></dt>
+<dd><p>make standard JANI compliant</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.JaniModel.model_type">
+<em class="property">property </em><code class="sig-name descname">model_type</code><a class="headerlink" href="#stormpy.storage.JaniModel.model_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Model type</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.JaniModel.name">
+<em class="property">property </em><code class="sig-name descname">name</code><a class="headerlink" href="#stormpy.storage.JaniModel.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>model name</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.JaniModel.remove_constant">
+<code class="sig-name descname">remove_constant</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.JaniModel.remove_constant" title="Permalink to this definition">¶</a></dt>
+<dd><p>remove a constant. Make sure the constant does not appear in the model.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.JaniModel.replace_automaton">
+<code class="sig-name descname">replace_automaton</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.JaniModel.replace_automaton" title="Permalink to this definition">¶</a></dt>
+<dd><p>replace automaton at index</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.JaniModel.restrict_edges">
+<code class="sig-name descname">restrict_edges</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.JaniModel.restrict_edges" title="Permalink to this definition">¶</a></dt>
+<dd><p>restrict model to edges given by set</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.JaniModel.set_model_type">
+<code class="sig-name descname">set_model_type</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.JaniModel.set_model_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets (only) the model type</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.JaniModel.set_standard_system_composition">
+<code class="sig-name descname">set_standard_system_composition</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.JaniModel.set_standard_system_composition" title="Permalink to this definition">¶</a></dt>
+<dd><p>sets the composition to the standard composition</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.JaniModel.substitute_constants">
+<code class="sig-name descname">substitute_constants</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.JaniModel.substitute_constants" title="Permalink to this definition">¶</a></dt>
+<dd><p>substitute constants</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.JaniModel.substitute_functions">
+<code class="sig-name descname">substitute_functions</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.JaniModel.substitute_functions" title="Permalink to this definition">¶</a></dt>
+<dd><p>substitute functions</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.JaniModel.to_dot">
+<code class="sig-name descname">to_dot</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.JaniModel.to_dot" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.JaniModel.undefined_constants_are_graph_preserving">
+<em class="property">property </em><code class="sig-name descname">undefined_constants_are_graph_preserving</code><a class="headerlink" href="#stormpy.storage.JaniModel.undefined_constants_are_graph_preserving" title="Permalink to this definition">¶</a></dt>
+<dd><p>Flag if the undefined constants do not change the graph structure</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="stormpy.storage.JaniOrderedAssignments">
+<em class="property">class </em><code class="sig-name descname">JaniOrderedAssignments</code><a class="headerlink" href="#stormpy.storage.JaniOrderedAssignments" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set of assignments</p>
+<dl class="method">
+<dt id="stormpy.storage.JaniOrderedAssignments.add">
+<code class="sig-name descname">add</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.JaniOrderedAssignments.add" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.JaniOrderedAssignments.clone">
+<code class="sig-name descname">clone</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.JaniOrderedAssignments.clone" title="Permalink to this definition">¶</a></dt>
+<dd><p>clone assignments (performs a deep copy)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.JaniOrderedAssignments.substitute">
+<code class="sig-name descname">substitute</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.JaniOrderedAssignments.substitute" title="Permalink to this definition">¶</a></dt>
+<dd><p>substitute in rhs according to given substitution map</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="stormpy.storage.JaniTemplateEdge">
+<em class="property">class </em><code class="sig-name descname">JaniTemplateEdge</code><a class="headerlink" href="#stormpy.storage.JaniTemplateEdge" title="Permalink to this definition">¶</a></dt>
+<dd><p>Template edge, internal data structure for edges</p>
+<dl class="method">
+<dt id="stormpy.storage.JaniTemplateEdge.add_destination">
+<code class="sig-name descname">add_destination</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.JaniTemplateEdge.add_destination" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.JaniTemplateEdge.assignments">
+<em class="property">property </em><code class="sig-name descname">assignments</code><a class="headerlink" href="#stormpy.storage.JaniTemplateEdge.assignments" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.JaniTemplateEdge.destinations">
+<em class="property">property </em><code class="sig-name descname">destinations</code><a class="headerlink" href="#stormpy.storage.JaniTemplateEdge.destinations" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.JaniTemplateEdge.guard">
+<em class="property">property </em><code class="sig-name descname">guard</code><a class="headerlink" href="#stormpy.storage.JaniTemplateEdge.guard" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="stormpy.storage.JaniTemplateEdgeDestination">
+<em class="property">class </em><code class="sig-name descname">JaniTemplateEdgeDestination</code><a class="headerlink" href="#stormpy.storage.JaniTemplateEdgeDestination" title="Permalink to this definition">¶</a></dt>
+<dd><p>Template edge destination, internal data structure for edge destinations</p>
+<dl class="method">
+<dt id="stormpy.storage.JaniTemplateEdgeDestination.assignments">
+<em class="property">property </em><code class="sig-name descname">assignments</code><a class="headerlink" href="#stormpy.storage.JaniTemplateEdgeDestination.assignments" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="stormpy.storage.JaniVariable">
+<em class="property">class </em><code class="sig-name descname">JaniVariable</code><a class="headerlink" href="#stormpy.storage.JaniVariable" title="Permalink to this definition">¶</a></dt>
+<dd><p>A Variable in JANI</p>
+<dl class="method">
+<dt id="stormpy.storage.JaniVariable.expression_variable">
+<em class="property">property </em><code class="sig-name descname">expression_variable</code><a class="headerlink" href="#stormpy.storage.JaniVariable.expression_variable" title="Permalink to this definition">¶</a></dt>
+<dd><p>expression variable for this variable</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.JaniVariable.name">
+<em class="property">property </em><code class="sig-name descname">name</code><a class="headerlink" href="#stormpy.storage.JaniVariable.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>name of constant</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="stormpy.storage.JaniVariableSet">
+<em class="property">class </em><code class="sig-name descname">JaniVariableSet</code><a class="headerlink" href="#stormpy.storage.JaniVariableSet" title="Permalink to this definition">¶</a></dt>
+<dd><p>Jani Set of Variables</p>
+<dl class="method">
+<dt id="stormpy.storage.JaniVariableSet.add_bounded_integer_variable">
+<code class="sig-name descname">add_bounded_integer_variable</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.JaniVariableSet.add_bounded_integer_variable" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.JaniVariableSet.add_variable">
+<code class="sig-name descname">add_variable</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.JaniVariableSet.add_variable" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.JaniVariableSet.empty">
+<code class="sig-name descname">empty</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.JaniVariableSet.empty" title="Permalink to this definition">¶</a></dt>
+<dd><p>is there a variable in the set?</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.JaniVariableSet.get_variable_by_expr_variable">
+<code class="sig-name descname">get_variable_by_expr_variable</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.JaniVariableSet.get_variable_by_expr_variable" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.JaniVariableSet.get_variable_by_name">
+<code class="sig-name descname">get_variable_by_name</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.JaniVariableSet.get_variable_by_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="stormpy.storage.ModelType">
+<em class="property">class </em><code class="sig-name descname">ModelType</code><a class="headerlink" href="#stormpy.storage.ModelType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Type of the model</p>
+<dl class="attribute">
+<dt id="stormpy.storage.ModelType.CTMC">
+<code class="sig-name descname">CTMC</code><em class="property"> = ModelType.CTMC</em><a class="headerlink" href="#stormpy.storage.ModelType.CTMC" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="stormpy.storage.ModelType.DTMC">
+<code class="sig-name descname">DTMC</code><em class="property"> = ModelType.DTMC</em><a class="headerlink" href="#stormpy.storage.ModelType.DTMC" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="stormpy.storage.ModelType.MA">
+<code class="sig-name descname">MA</code><em class="property"> = ModelType.MA</em><a class="headerlink" href="#stormpy.storage.ModelType.MA" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="stormpy.storage.ModelType.MDP">
+<code class="sig-name descname">MDP</code><em class="property"> = ModelType.MDP</em><a class="headerlink" href="#stormpy.storage.ModelType.MDP" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="stormpy.storage.ModelType.POMDP">
+<code class="sig-name descname">POMDP</code><em class="property"> = ModelType.POMDP</em><a class="headerlink" href="#stormpy.storage.ModelType.POMDP" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="stormpy.storage.OperatorType">
+<em class="property">class </em><code class="sig-name descname">OperatorType</code><a class="headerlink" href="#stormpy.storage.OperatorType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Type of an operator (of any sort)</p>
+<dl class="attribute">
+<dt id="stormpy.storage.OperatorType.And">
+<code class="sig-name descname">And</code><em class="property"> = OperatorType.And</em><a class="headerlink" href="#stormpy.storage.OperatorType.And" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="stormpy.storage.OperatorType.Ceil">
+<code class="sig-name descname">Ceil</code><em class="property"> = OperatorType.Ceil</em><a class="headerlink" href="#stormpy.storage.OperatorType.Ceil" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="stormpy.storage.OperatorType.Divide">
+<code class="sig-name descname">Divide</code><em class="property"> = OperatorType.Divide</em><a class="headerlink" href="#stormpy.storage.OperatorType.Divide" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="stormpy.storage.OperatorType.Equal">
+<code class="sig-name descname">Equal</code><em class="property"> = OperatorType.Equal</em><a class="headerlink" href="#stormpy.storage.OperatorType.Equal" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="stormpy.storage.OperatorType.Floor">
+<code class="sig-name descname">Floor</code><em class="property"> = OperatorType.Floor</em><a class="headerlink" href="#stormpy.storage.OperatorType.Floor" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="stormpy.storage.OperatorType.Greater">
+<code class="sig-name descname">Greater</code><em class="property"> = OperatorType.Greater</em><a class="headerlink" href="#stormpy.storage.OperatorType.Greater" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="stormpy.storage.OperatorType.GreaterOrEqual">
+<code class="sig-name descname">GreaterOrEqual</code><em class="property"> = OperatorType.GreaterOrEqual</em><a class="headerlink" href="#stormpy.storage.OperatorType.GreaterOrEqual" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="stormpy.storage.OperatorType.Iff">
+<code class="sig-name descname">Iff</code><em class="property"> = OperatorType.Iff</em><a class="headerlink" href="#stormpy.storage.OperatorType.Iff" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="stormpy.storage.OperatorType.Implies">
+<code class="sig-name descname">Implies</code><em class="property"> = OperatorType.Implies</em><a class="headerlink" href="#stormpy.storage.OperatorType.Implies" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="stormpy.storage.OperatorType.Ite">
+<code class="sig-name descname">Ite</code><em class="property"> = OperatorType.Ite</em><a class="headerlink" href="#stormpy.storage.OperatorType.Ite" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="stormpy.storage.OperatorType.Less">
+<code class="sig-name descname">Less</code><em class="property"> = OperatorType.Less</em><a class="headerlink" href="#stormpy.storage.OperatorType.Less" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="stormpy.storage.OperatorType.LessOrEqual">
+<code class="sig-name descname">LessOrEqual</code><em class="property"> = OperatorType.LessOrEqual</em><a class="headerlink" href="#stormpy.storage.OperatorType.LessOrEqual" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="stormpy.storage.OperatorType.Max">
+<code class="sig-name descname">Max</code><em class="property"> = OperatorType.Max</em><a class="headerlink" href="#stormpy.storage.OperatorType.Max" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="stormpy.storage.OperatorType.Min">
+<code class="sig-name descname">Min</code><em class="property"> = OperatorType.Min</em><a class="headerlink" href="#stormpy.storage.OperatorType.Min" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="stormpy.storage.OperatorType.Minus">
+<code class="sig-name descname">Minus</code><em class="property"> = OperatorType.Minus</em><a class="headerlink" href="#stormpy.storage.OperatorType.Minus" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="stormpy.storage.OperatorType.Modulo">
+<code class="sig-name descname">Modulo</code><em class="property"> = OperatorType.Modulo</em><a class="headerlink" href="#stormpy.storage.OperatorType.Modulo" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="stormpy.storage.OperatorType.Not">
+<code class="sig-name descname">Not</code><em class="property"> = OperatorType.Not</em><a class="headerlink" href="#stormpy.storage.OperatorType.Not" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="stormpy.storage.OperatorType.NotEqual">
+<code class="sig-name descname">NotEqual</code><em class="property"> = OperatorType.NotEqual</em><a class="headerlink" href="#stormpy.storage.OperatorType.NotEqual" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="stormpy.storage.OperatorType.Or">
+<code class="sig-name descname">Or</code><em class="property"> = OperatorType.Or</em><a class="headerlink" href="#stormpy.storage.OperatorType.Or" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="stormpy.storage.OperatorType.Plus">
+<code class="sig-name descname">Plus</code><em class="property"> = OperatorType.Plus</em><a class="headerlink" href="#stormpy.storage.OperatorType.Plus" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="stormpy.storage.OperatorType.Power">
+<code class="sig-name descname">Power</code><em class="property"> = OperatorType.Power</em><a class="headerlink" href="#stormpy.storage.OperatorType.Power" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="stormpy.storage.OperatorType.Times">
+<code class="sig-name descname">Times</code><em class="property"> = OperatorType.Times</em><a class="headerlink" href="#stormpy.storage.OperatorType.Times" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="stormpy.storage.OperatorType.Xor">
+<code class="sig-name descname">Xor</code><em class="property"> = OperatorType.Xor</em><a class="headerlink" href="#stormpy.storage.OperatorType.Xor" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="stormpy.storage.ParametricSparseMatrix">
+<em class="property">class </em><code class="sig-name descname">ParametricSparseMatrix</code><a class="headerlink" href="#stormpy.storage.ParametricSparseMatrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parametric sparse matrix</p>
+<dl class="method">
+<dt id="stormpy.storage.ParametricSparseMatrix.get_row">
+<code class="sig-name descname">get_row</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.ParametricSparseMatrix.get_row" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get row</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.ParametricSparseMatrix.get_row_group_end">
+<code class="sig-name descname">get_row_group_end</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.ParametricSparseMatrix.get_row_group_end" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.ParametricSparseMatrix.get_row_group_start">
+<code class="sig-name descname">get_row_group_start</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.ParametricSparseMatrix.get_row_group_start" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.ParametricSparseMatrix.get_rows">
+<code class="sig-name descname">get_rows</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.ParametricSparseMatrix.get_rows" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get rows from start to end</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.ParametricSparseMatrix.has_trivial_row_grouping">
+<em class="property">property </em><code class="sig-name descname">has_trivial_row_grouping</code><a class="headerlink" href="#stormpy.storage.ParametricSparseMatrix.has_trivial_row_grouping" title="Permalink to this definition">¶</a></dt>
+<dd><p>Trivial row grouping</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.ParametricSparseMatrix.nr_columns">
+<em class="property">property </em><code class="sig-name descname">nr_columns</code><a class="headerlink" href="#stormpy.storage.ParametricSparseMatrix.nr_columns" title="Permalink to this definition">¶</a></dt>
+<dd><p>Number of columns</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.ParametricSparseMatrix.nr_entries">
+<em class="property">property </em><code class="sig-name descname">nr_entries</code><a class="headerlink" href="#stormpy.storage.ParametricSparseMatrix.nr_entries" title="Permalink to this definition">¶</a></dt>
+<dd><p>Number of non-zero entries</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.ParametricSparseMatrix.nr_rows">
+<em class="property">property </em><code class="sig-name descname">nr_rows</code><a class="headerlink" href="#stormpy.storage.ParametricSparseMatrix.nr_rows" title="Permalink to this definition">¶</a></dt>
+<dd><p>Number of rows</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.ParametricSparseMatrix.print_row">
+<code class="sig-name descname">print_row</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.ParametricSparseMatrix.print_row" title="Permalink to this definition">¶</a></dt>
+<dd><p>Print row</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.ParametricSparseMatrix.row_iter">
+<code class="sig-name descname">row_iter</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.ParametricSparseMatrix.row_iter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get iterator from start to end</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.ParametricSparseMatrix.submatrix">
+<code class="sig-name descname">submatrix</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.ParametricSparseMatrix.submatrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get submatrix</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="stormpy.storage.ParametricSparseMatrixEntry">
+<em class="property">class </em><code class="sig-name descname">ParametricSparseMatrixEntry</code><a class="headerlink" href="#stormpy.storage.ParametricSparseMatrixEntry" title="Permalink to this definition">¶</a></dt>
+<dd><p>Entry of parametric sparse matrix</p>
+<dl class="method">
+<dt id="stormpy.storage.ParametricSparseMatrixEntry.column">
+<em class="property">property </em><code class="sig-name descname">column</code><a class="headerlink" href="#stormpy.storage.ParametricSparseMatrixEntry.column" title="Permalink to this definition">¶</a></dt>
+<dd><p>Column</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.ParametricSparseMatrixEntry.set_value">
+<code class="sig-name descname">set_value</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.ParametricSparseMatrixEntry.set_value" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set value</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.ParametricSparseMatrixEntry.value">
+<code class="sig-name descname">value</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.ParametricSparseMatrixEntry.value" title="Permalink to this definition">¶</a></dt>
+<dd><p>Value</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="stormpy.storage.ParametricSparseMatrixRows">
+<em class="property">class </em><code class="sig-name descname">ParametricSparseMatrixRows</code><a class="headerlink" href="#stormpy.storage.ParametricSparseMatrixRows" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set of rows in a parametric sparse matrix</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="stormpy.storage.PrismAssignment">
+<em class="property">class </em><code class="sig-name descname">PrismAssignment</code><a class="headerlink" href="#stormpy.storage.PrismAssignment" title="Permalink to this definition">¶</a></dt>
+<dd><p>An assignment in prism</p>
+<dl class="method">
+<dt id="stormpy.storage.PrismAssignment.expression">
+<em class="property">property </em><code class="sig-name descname">expression</code><a class="headerlink" href="#stormpy.storage.PrismAssignment.expression" title="Permalink to this definition">¶</a></dt>
+<dd><p>Expression for the update</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.PrismAssignment.variable">
+<em class="property">property </em><code class="sig-name descname">variable</code><a class="headerlink" href="#stormpy.storage.PrismAssignment.variable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Variable that is updated</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="stormpy.storage.PrismCommand">
+<em class="property">class </em><code class="sig-name descname">PrismCommand</code><a class="headerlink" href="#stormpy.storage.PrismCommand" title="Permalink to this definition">¶</a></dt>
+<dd><p>A command in a Prism program</p>
+<dl class="method">
+<dt id="stormpy.storage.PrismCommand.global_index">
+<em class="property">property </em><code class="sig-name descname">global_index</code><a class="headerlink" href="#stormpy.storage.PrismCommand.global_index" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get global index</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.PrismCommand.guard_expression">
+<em class="property">property </em><code class="sig-name descname">guard_expression</code><a class="headerlink" href="#stormpy.storage.PrismCommand.guard_expression" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get guard expression</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.PrismCommand.updates">
+<em class="property">property </em><code class="sig-name descname">updates</code><a class="headerlink" href="#stormpy.storage.PrismCommand.updates" title="Permalink to this definition">¶</a></dt>
+<dd><p>Updates in the command</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="stormpy.storage.PrismModelType">
+<em class="property">class </em><code class="sig-name descname">PrismModelType</code><a class="headerlink" href="#stormpy.storage.PrismModelType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Type of the prism model</p>
+<dl class="attribute">
+<dt id="stormpy.storage.PrismModelType.CTMC">
+<code class="sig-name descname">CTMC</code><em class="property"> = PrismModelType.CTMC</em><a class="headerlink" href="#stormpy.storage.PrismModelType.CTMC" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="stormpy.storage.PrismModelType.CTMDP">
+<code class="sig-name descname">CTMDP</code><em class="property"> = PrismModelType.CTMDP</em><a class="headerlink" href="#stormpy.storage.PrismModelType.CTMDP" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="stormpy.storage.PrismModelType.DTMC">
+<code class="sig-name descname">DTMC</code><em class="property"> = PrismModelType.DTMC</em><a class="headerlink" href="#stormpy.storage.PrismModelType.DTMC" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="stormpy.storage.PrismModelType.MA">
+<code class="sig-name descname">MA</code><em class="property"> = PrismModelType.MA</em><a class="headerlink" href="#stormpy.storage.PrismModelType.MA" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="stormpy.storage.PrismModelType.MDP">
+<code class="sig-name descname">MDP</code><em class="property"> = PrismModelType.MDP</em><a class="headerlink" href="#stormpy.storage.PrismModelType.MDP" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="stormpy.storage.PrismModelType.UNDEFINED">
+<code class="sig-name descname">UNDEFINED</code><em class="property"> = PrismModelType.UNDEFINED</em><a class="headerlink" href="#stormpy.storage.PrismModelType.UNDEFINED" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="stormpy.storage.PrismModule">
+<em class="property">class </em><code class="sig-name descname">PrismModule</code><a class="headerlink" href="#stormpy.storage.PrismModule" title="Permalink to this definition">¶</a></dt>
+<dd><p>A module in a Prism program</p>
+<dl class="method">
+<dt id="stormpy.storage.PrismModule.boolean_variables">
+<em class="property">property </em><code class="sig-name descname">boolean_variables</code><a class="headerlink" href="#stormpy.storage.PrismModule.boolean_variables" title="Permalink to this definition">¶</a></dt>
+<dd><p>All boolean Variables of this module</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.PrismModule.commands">
+<em class="property">property </em><code class="sig-name descname">commands</code><a class="headerlink" href="#stormpy.storage.PrismModule.commands" title="Permalink to this definition">¶</a></dt>
+<dd><p>Commands in the module</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.PrismModule.integer_variables">
+<em class="property">property </em><code class="sig-name descname">integer_variables</code><a class="headerlink" href="#stormpy.storage.PrismModule.integer_variables" title="Permalink to this definition">¶</a></dt>
+<dd><p>All integer Variables of this module</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.PrismModule.name">
+<em class="property">property </em><code class="sig-name descname">name</code><a class="headerlink" href="#stormpy.storage.PrismModule.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Name of the module</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="stormpy.storage.PrismProgram">
+<em class="property">class </em><code class="sig-name descname">PrismProgram</code><a class="headerlink" href="#stormpy.storage.PrismProgram" title="Permalink to this definition">¶</a></dt>
+<dd><p>A Prism Program</p>
+<dl class="method">
+<dt id="stormpy.storage.PrismProgram.constants">
+<em class="property">property </em><code class="sig-name descname">constants</code><a class="headerlink" href="#stormpy.storage.PrismProgram.constants" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get Program Constants</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.PrismProgram.define_constants">
+<code class="sig-name descname">define_constants</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.PrismProgram.define_constants" title="Permalink to this definition">¶</a></dt>
+<dd><p>Define constants</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.PrismProgram.expression_manager">
+<em class="property">property </em><code class="sig-name descname">expression_manager</code><a class="headerlink" href="#stormpy.storage.PrismProgram.expression_manager" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the expression manager for expressions in this program</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.PrismProgram.get_label_expression">
+<code class="sig-name descname">get_label_expression</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.PrismProgram.get_label_expression" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the expression of the given label.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.PrismProgram.hasUndefinedConstants">
+<em class="property">property </em><code class="sig-name descname">hasUndefinedConstants</code><a class="headerlink" href="#stormpy.storage.PrismProgram.hasUndefinedConstants" title="Permalink to this definition">¶</a></dt>
+<dd><p>Does the program have undefined constants?</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.PrismProgram.has_undefined_constants">
+<em class="property">property </em><code class="sig-name descname">has_undefined_constants</code><a class="headerlink" href="#stormpy.storage.PrismProgram.has_undefined_constants" title="Permalink to this definition">¶</a></dt>
+<dd><p>Flag if program has undefined constants</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.PrismProgram.isDeterministicModel">
+<em class="property">property </em><code class="sig-name descname">isDeterministicModel</code><a class="headerlink" href="#stormpy.storage.PrismProgram.isDeterministicModel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Does the program describe a deterministic model?</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.PrismProgram.model_type">
+<em class="property">property </em><code class="sig-name descname">model_type</code><a class="headerlink" href="#stormpy.storage.PrismProgram.model_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Model type</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.PrismProgram.modules">
+<em class="property">property </em><code class="sig-name descname">modules</code><a class="headerlink" href="#stormpy.storage.PrismProgram.modules" title="Permalink to this definition">¶</a></dt>
+<dd><p>Modules in the program</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.PrismProgram.nr_modules">
+<em class="property">property </em><code class="sig-name descname">nr_modules</code><a class="headerlink" href="#stormpy.storage.PrismProgram.nr_modules" title="Permalink to this definition">¶</a></dt>
+<dd><p>Number of modules</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.PrismProgram.restrict_commands">
+<code class="sig-name descname">restrict_commands</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.PrismProgram.restrict_commands" title="Permalink to this definition">¶</a></dt>
+<dd><p>Restrict commands</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.PrismProgram.simplify">
+<code class="sig-name descname">simplify</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.PrismProgram.simplify" title="Permalink to this definition">¶</a></dt>
+<dd><p>Simplify</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.PrismProgram.substitute_constants">
+<code class="sig-name descname">substitute_constants</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.PrismProgram.substitute_constants" title="Permalink to this definition">¶</a></dt>
+<dd><p>Substitute constants within program</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.PrismProgram.to_jani">
+<code class="sig-name descname">to_jani</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.PrismProgram.to_jani" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transform to Jani program</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.PrismProgram.undefined_constants_are_graph_preserving">
+<em class="property">property </em><code class="sig-name descname">undefined_constants_are_graph_preserving</code><a class="headerlink" href="#stormpy.storage.PrismProgram.undefined_constants_are_graph_preserving" title="Permalink to this definition">¶</a></dt>
+<dd><p>Flag if the undefined constants do not change the graph structure</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.PrismProgram.used_constants">
+<code class="sig-name descname">used_constants</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.PrismProgram.used_constants" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute Used Constants</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.PrismProgram.variables">
+<em class="property">property </em><code class="sig-name descname">variables</code><a class="headerlink" href="#stormpy.storage.PrismProgram.variables" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get all Expression Variables used by the program</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="stormpy.storage.PrismUpdate">
+<em class="property">class </em><code class="sig-name descname">PrismUpdate</code><a class="headerlink" href="#stormpy.storage.PrismUpdate" title="Permalink to this definition">¶</a></dt>
+<dd><p>An update in a Prism command</p>
+<dl class="method">
+<dt id="stormpy.storage.PrismUpdate.assignments">
+<em class="property">property </em><code class="sig-name descname">assignments</code><a class="headerlink" href="#stormpy.storage.PrismUpdate.assignments" title="Permalink to this definition">¶</a></dt>
+<dd><p>Assignments in the update</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.PrismUpdate.probability_expression">
+<em class="property">property </em><code class="sig-name descname">probability_expression</code><a class="headerlink" href="#stormpy.storage.PrismUpdate.probability_expression" title="Permalink to this definition">¶</a></dt>
+<dd><p>The probability expression for this update</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="stormpy.storage.Prism_Boolean_Variable">
+<em class="property">class </em><code class="sig-name descname">Prism_Boolean_Variable</code><a class="headerlink" href="#stormpy.storage.Prism_Boolean_Variable" title="Permalink to this definition">¶</a></dt>
+<dd><p>A program boolean variable in a Prism program</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="stormpy.storage.Prism_Integer_Variable">
+<em class="property">class </em><code class="sig-name descname">Prism_Integer_Variable</code><a class="headerlink" href="#stormpy.storage.Prism_Integer_Variable" title="Permalink to this definition">¶</a></dt>
+<dd><p>A program integer variable in a Prism program</p>
+<dl class="method">
+<dt id="stormpy.storage.Prism_Integer_Variable.lower_bound_expression">
+<em class="property">property </em><code class="sig-name descname">lower_bound_expression</code><a class="headerlink" href="#stormpy.storage.Prism_Integer_Variable.lower_bound_expression" title="Permalink to this definition">¶</a></dt>
+<dd><p>The the lower bound expression of this integer variable</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.Prism_Integer_Variable.upper_bound_expression">
+<em class="property">property </em><code class="sig-name descname">upper_bound_expression</code><a class="headerlink" href="#stormpy.storage.Prism_Integer_Variable.upper_bound_expression" title="Permalink to this definition">¶</a></dt>
+<dd><p>The the upper bound expression of this integer variable</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="stormpy.storage.Prism_Variable">
+<em class="property">class </em><code class="sig-name descname">Prism_Variable</code><a class="headerlink" href="#stormpy.storage.Prism_Variable" title="Permalink to this definition">¶</a></dt>
+<dd><p>A program variable in a Prism program</p>
+<dl class="method">
+<dt id="stormpy.storage.Prism_Variable.expression_variable">
+<em class="property">property </em><code class="sig-name descname">expression_variable</code><a class="headerlink" href="#stormpy.storage.Prism_Variable.expression_variable" title="Permalink to this definition">¶</a></dt>
+<dd><p>The expression variable corresponding to the variable</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.Prism_Variable.initial_value_expression">
+<em class="property">property </em><code class="sig-name descname">initial_value_expression</code><a class="headerlink" href="#stormpy.storage.Prism_Variable.initial_value_expression" title="Permalink to this definition">¶</a></dt>
+<dd><p>The expression represented the initial value of the variable</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.Prism_Variable.name">
+<em class="property">property </em><code class="sig-name descname">name</code><a class="headerlink" href="#stormpy.storage.Prism_Variable.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Variable Name</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="stormpy.storage.SchedulerChoiceDouble">
+<em class="property">class </em><code class="sig-name descname">SchedulerChoiceDouble</code><a class="headerlink" href="#stormpy.storage.SchedulerChoiceDouble" title="Permalink to this definition">¶</a></dt>
+<dd><p>A choice of a finite memory scheduler</p>
+<dl class="method">
+<dt id="stormpy.storage.SchedulerChoiceDouble.defined">
+<em class="property">property </em><code class="sig-name descname">defined</code><a class="headerlink" href="#stormpy.storage.SchedulerChoiceDouble.defined" title="Permalink to this definition">¶</a></dt>
+<dd><p>Is the choice defined by the scheduler?</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.SchedulerChoiceDouble.deterministic">
+<em class="property">property </em><code class="sig-name descname">deterministic</code><a class="headerlink" href="#stormpy.storage.SchedulerChoiceDouble.deterministic" title="Permalink to this definition">¶</a></dt>
+<dd><p>Is the choice deterministic (given by a Dirac distribution)?</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.SchedulerChoiceDouble.get_choice">
+<code class="sig-name descname">get_choice</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.SchedulerChoiceDouble.get_choice" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the distribution over the actions</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.SchedulerChoiceDouble.get_deterministic_choice">
+<code class="sig-name descname">get_deterministic_choice</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.SchedulerChoiceDouble.get_deterministic_choice" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the deterministic choice</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="stormpy.storage.SchedulerDouble">
+<em class="property">class </em><code class="sig-name descname">SchedulerDouble</code><a class="headerlink" href="#stormpy.storage.SchedulerDouble" title="Permalink to this definition">¶</a></dt>
+<dd><p>A Finite Memory Scheduler</p>
+<dl class="method">
+<dt id="stormpy.storage.SchedulerDouble.compute_action_support">
+<code class="sig-name descname">compute_action_support</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.SchedulerDouble.compute_action_support" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.SchedulerDouble.deterministic">
+<em class="property">property </em><code class="sig-name descname">deterministic</code><a class="headerlink" href="#stormpy.storage.SchedulerDouble.deterministic" title="Permalink to this definition">¶</a></dt>
+<dd><p>Is the scheduler deterministic?</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.SchedulerDouble.get_choice">
+<code class="sig-name descname">get_choice</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.SchedulerDouble.get_choice" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.SchedulerDouble.memory_size">
+<em class="property">property </em><code class="sig-name descname">memory_size</code><a class="headerlink" href="#stormpy.storage.SchedulerDouble.memory_size" title="Permalink to this definition">¶</a></dt>
+<dd><p>How much memory does the scheduler take?</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.SchedulerDouble.memoryless">
+<em class="property">property </em><code class="sig-name descname">memoryless</code><a class="headerlink" href="#stormpy.storage.SchedulerDouble.memoryless" title="Permalink to this definition">¶</a></dt>
+<dd><p>Is the scheduler memoryless?</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="stormpy.storage.SimpleValuation">
+<em class="property">class </em><code class="sig-name descname">SimpleValuation</code><a class="headerlink" href="#stormpy.storage.SimpleValuation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Valuations for storm variables</p>
+<dl class="method">
+<dt id="stormpy.storage.SimpleValuation.get_boolean_value">
+<code class="sig-name descname">get_boolean_value</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.SimpleValuation.get_boolean_value" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.SimpleValuation.get_integer_value">
+<code class="sig-name descname">get_integer_value</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.SimpleValuation.get_integer_value" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="stormpy.storage.SparseCtmc">
+<em class="property">class </em><code class="sig-name descname">SparseCtmc</code><a class="headerlink" href="#stormpy.storage.SparseCtmc" title="Permalink to this definition">¶</a></dt>
+<dd><p>CTMC in sparse representation</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="stormpy.storage.SparseDtmc">
+<em class="property">class </em><code class="sig-name descname">SparseDtmc</code><a class="headerlink" href="#stormpy.storage.SparseDtmc" title="Permalink to this definition">¶</a></dt>
+<dd><p>DTMC in sparse representation</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="stormpy.storage.SparseMA">
+<em class="property">class </em><code class="sig-name descname">SparseMA</code><a class="headerlink" href="#stormpy.storage.SparseMA" title="Permalink to this definition">¶</a></dt>
+<dd><p>MA in sparse representation</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="stormpy.storage.SparseMatrix">
+<em class="property">class </em><code class="sig-name descname">SparseMatrix</code><a class="headerlink" href="#stormpy.storage.SparseMatrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sparse matrix</p>
+<dl class="method">
+<dt id="stormpy.storage.SparseMatrix.get_row">
+<code class="sig-name descname">get_row</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.SparseMatrix.get_row" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get row</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.SparseMatrix.get_row_group_end">
+<code class="sig-name descname">get_row_group_end</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.SparseMatrix.get_row_group_end" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.SparseMatrix.get_row_group_start">
+<code class="sig-name descname">get_row_group_start</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.SparseMatrix.get_row_group_start" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.SparseMatrix.get_rows">
+<code class="sig-name descname">get_rows</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.SparseMatrix.get_rows" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get rows from start to end</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.SparseMatrix.has_trivial_row_grouping">
+<em class="property">property </em><code class="sig-name descname">has_trivial_row_grouping</code><a class="headerlink" href="#stormpy.storage.SparseMatrix.has_trivial_row_grouping" title="Permalink to this definition">¶</a></dt>
+<dd><p>Trivial row grouping</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.SparseMatrix.nr_columns">
+<em class="property">property </em><code class="sig-name descname">nr_columns</code><a class="headerlink" href="#stormpy.storage.SparseMatrix.nr_columns" title="Permalink to this definition">¶</a></dt>
+<dd><p>Number of columns</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.SparseMatrix.nr_entries">
+<em class="property">property </em><code class="sig-name descname">nr_entries</code><a class="headerlink" href="#stormpy.storage.SparseMatrix.nr_entries" title="Permalink to this definition">¶</a></dt>
+<dd><p>Number of non-zero entries</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.SparseMatrix.nr_rows">
+<em class="property">property </em><code class="sig-name descname">nr_rows</code><a class="headerlink" href="#stormpy.storage.SparseMatrix.nr_rows" title="Permalink to this definition">¶</a></dt>
+<dd><p>Number of rows</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.SparseMatrix.print_row">
+<code class="sig-name descname">print_row</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.SparseMatrix.print_row" title="Permalink to this definition">¶</a></dt>
+<dd><p>Print rows from start to end</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.SparseMatrix.row_iter">
+<code class="sig-name descname">row_iter</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.SparseMatrix.row_iter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get iterator from start to end</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.SparseMatrix.submatrix">
+<code class="sig-name descname">submatrix</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.SparseMatrix.submatrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get submatrix</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="stormpy.storage.SparseMatrixEntry">
+<em class="property">class </em><code class="sig-name descname">SparseMatrixEntry</code><a class="headerlink" href="#stormpy.storage.SparseMatrixEntry" title="Permalink to this definition">¶</a></dt>
+<dd><p>Entry of sparse matrix</p>
+<dl class="method">
+<dt id="stormpy.storage.SparseMatrixEntry.column">
+<em class="property">property </em><code class="sig-name descname">column</code><a class="headerlink" href="#stormpy.storage.SparseMatrixEntry.column" title="Permalink to this definition">¶</a></dt>
+<dd><p>Column</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.SparseMatrixEntry.set_value">
+<code class="sig-name descname">set_value</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.SparseMatrixEntry.set_value" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set value</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.SparseMatrixEntry.value">
+<code class="sig-name descname">value</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.SparseMatrixEntry.value" title="Permalink to this definition">¶</a></dt>
+<dd><p>Value</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="stormpy.storage.SparseMatrixRows">
+<em class="property">class </em><code class="sig-name descname">SparseMatrixRows</code><a class="headerlink" href="#stormpy.storage.SparseMatrixRows" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set of rows in a sparse matrix</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="stormpy.storage.SparseMdp">
+<em class="property">class </em><code class="sig-name descname">SparseMdp</code><a class="headerlink" href="#stormpy.storage.SparseMdp" title="Permalink to this definition">¶</a></dt>
+<dd><p>MDP in sparse representation</p>
+<dl class="method">
+<dt id="stormpy.storage.SparseMdp.apply_scheduler">
+<code class="sig-name descname">apply_scheduler</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.SparseMdp.apply_scheduler" title="Permalink to this definition">¶</a></dt>
+<dd><p>apply scheduler</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.SparseMdp.nondeterministic_choice_indices">
+<em class="property">property </em><code class="sig-name descname">nondeterministic_choice_indices</code><a class="headerlink" href="#stormpy.storage.SparseMdp.nondeterministic_choice_indices" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="stormpy.storage.SparseModelAction">
+<em class="property">class </em><code class="sig-name descname">SparseModelAction</code><a class="headerlink" href="#stormpy.storage.SparseModelAction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Action for state in sparse model</p>
+<dl class="method">
+<dt id="stormpy.storage.SparseModelAction.id">
+<em class="property">property </em><code class="sig-name descname">id</code><a class="headerlink" href="#stormpy.storage.SparseModelAction.id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Id</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.SparseModelAction.transitions">
+<em class="property">property </em><code class="sig-name descname">transitions</code><a class="headerlink" href="#stormpy.storage.SparseModelAction.transitions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get transitions</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="stormpy.storage.SparseModelActions">
+<em class="property">class </em><code class="sig-name descname">SparseModelActions</code><a class="headerlink" href="#stormpy.storage.SparseModelActions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Actions for state in sparse model</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="stormpy.storage.SparseModelState">
+<em class="property">class </em><code class="sig-name descname">SparseModelState</code><a class="headerlink" href="#stormpy.storage.SparseModelState" title="Permalink to this definition">¶</a></dt>
+<dd><p>State in sparse model</p>
+<dl class="method">
+<dt id="stormpy.storage.SparseModelState.actions">
+<em class="property">property </em><code class="sig-name descname">actions</code><a class="headerlink" href="#stormpy.storage.SparseModelState.actions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get actions</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.SparseModelState.id">
+<em class="property">property </em><code class="sig-name descname">id</code><a class="headerlink" href="#stormpy.storage.SparseModelState.id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Id</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.SparseModelState.labels">
+<em class="property">property </em><code class="sig-name descname">labels</code><a class="headerlink" href="#stormpy.storage.SparseModelState.labels" title="Permalink to this definition">¶</a></dt>
+<dd><p>Labels</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="stormpy.storage.SparseModelStates">
+<em class="property">class </em><code class="sig-name descname">SparseModelStates</code><a class="headerlink" href="#stormpy.storage.SparseModelStates" title="Permalink to this definition">¶</a></dt>
+<dd><p>States in sparse model</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="stormpy.storage.SparseParametricCtmc">
+<em class="property">class </em><code class="sig-name descname">SparseParametricCtmc</code><a class="headerlink" href="#stormpy.storage.SparseParametricCtmc" title="Permalink to this definition">¶</a></dt>
+<dd><p>pCTMC in sparse representation</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="stormpy.storage.SparseParametricDtmc">
+<em class="property">class </em><code class="sig-name descname">SparseParametricDtmc</code><a class="headerlink" href="#stormpy.storage.SparseParametricDtmc" title="Permalink to this definition">¶</a></dt>
+<dd><p>pDTMC in sparse representation</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="stormpy.storage.SparseParametricMA">
+<em class="property">class </em><code class="sig-name descname">SparseParametricMA</code><a class="headerlink" href="#stormpy.storage.SparseParametricMA" title="Permalink to this definition">¶</a></dt>
+<dd><p>pMA in sparse representation</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="stormpy.storage.SparseParametricMdp">
+<em class="property">class </em><code class="sig-name descname">SparseParametricMdp</code><a class="headerlink" href="#stormpy.storage.SparseParametricMdp" title="Permalink to this definition">¶</a></dt>
+<dd><p>pMDP in sparse representation</p>
+<dl class="method">
+<dt id="stormpy.storage.SparseParametricMdp.apply_scheduler">
+<code class="sig-name descname">apply_scheduler</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.SparseParametricMdp.apply_scheduler" title="Permalink to this definition">¶</a></dt>
+<dd><p>apply scheduler</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.SparseParametricMdp.nondeterministic_choice_indices">
+<em class="property">property </em><code class="sig-name descname">nondeterministic_choice_indices</code><a class="headerlink" href="#stormpy.storage.SparseParametricMdp.nondeterministic_choice_indices" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="stormpy.storage.SparseParametricModelAction">
+<em class="property">class </em><code class="sig-name descname">SparseParametricModelAction</code><a class="headerlink" href="#stormpy.storage.SparseParametricModelAction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Action for state in sparse parametric model</p>
+<dl class="method">
+<dt id="stormpy.storage.SparseParametricModelAction.id">
+<em class="property">property </em><code class="sig-name descname">id</code><a class="headerlink" href="#stormpy.storage.SparseParametricModelAction.id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Id</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.SparseParametricModelAction.transitions">
+<em class="property">property </em><code class="sig-name descname">transitions</code><a class="headerlink" href="#stormpy.storage.SparseParametricModelAction.transitions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get transitions</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="stormpy.storage.SparseParametricModelActions">
+<em class="property">class </em><code class="sig-name descname">SparseParametricModelActions</code><a class="headerlink" href="#stormpy.storage.SparseParametricModelActions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Actions for state in sparse parametric model</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="stormpy.storage.SparseParametricModelState">
+<em class="property">class </em><code class="sig-name descname">SparseParametricModelState</code><a class="headerlink" href="#stormpy.storage.SparseParametricModelState" title="Permalink to this definition">¶</a></dt>
+<dd><p>State in sparse parametric model</p>
+<dl class="method">
+<dt id="stormpy.storage.SparseParametricModelState.actions">
+<em class="property">property </em><code class="sig-name descname">actions</code><a class="headerlink" href="#stormpy.storage.SparseParametricModelState.actions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get actions</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.SparseParametricModelState.id">
+<em class="property">property </em><code class="sig-name descname">id</code><a class="headerlink" href="#stormpy.storage.SparseParametricModelState.id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Id</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.SparseParametricModelState.labels">
+<em class="property">property </em><code class="sig-name descname">labels</code><a class="headerlink" href="#stormpy.storage.SparseParametricModelState.labels" title="Permalink to this definition">¶</a></dt>
+<dd><p>Labels</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="stormpy.storage.SparseParametricModelStates">
+<em class="property">class </em><code class="sig-name descname">SparseParametricModelStates</code><a class="headerlink" href="#stormpy.storage.SparseParametricModelStates" title="Permalink to this definition">¶</a></dt>
+<dd><p>States in sparse parametric model</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="stormpy.storage.SparseParametricRewardModel">
+<em class="property">class </em><code class="sig-name descname">SparseParametricRewardModel</code><a class="headerlink" href="#stormpy.storage.SparseParametricRewardModel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reward structure for parametric sparse models</p>
+<dl class="method">
+<dt id="stormpy.storage.SparseParametricRewardModel.get_state_action_reward">
+<code class="sig-name descname">get_state_action_reward</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.SparseParametricRewardModel.get_state_action_reward" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.SparseParametricRewardModel.get_state_reward">
+<code class="sig-name descname">get_state_reward</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.SparseParametricRewardModel.get_state_reward" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.SparseParametricRewardModel.has_state_action_rewards">
+<em class="property">property </em><code class="sig-name descname">has_state_action_rewards</code><a class="headerlink" href="#stormpy.storage.SparseParametricRewardModel.has_state_action_rewards" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.SparseParametricRewardModel.has_state_rewards">
+<em class="property">property </em><code class="sig-name descname">has_state_rewards</code><a class="headerlink" href="#stormpy.storage.SparseParametricRewardModel.has_state_rewards" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.SparseParametricRewardModel.has_transition_rewards">
+<em class="property">property </em><code class="sig-name descname">has_transition_rewards</code><a class="headerlink" href="#stormpy.storage.SparseParametricRewardModel.has_transition_rewards" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.SparseParametricRewardModel.reduce_to_state_based_rewards">
+<code class="sig-name descname">reduce_to_state_based_rewards</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.SparseParametricRewardModel.reduce_to_state_based_rewards" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reduce to state-based rewards</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.SparseParametricRewardModel.state_action_rewards">
+<em class="property">property </em><code class="sig-name descname">state_action_rewards</code><a class="headerlink" href="#stormpy.storage.SparseParametricRewardModel.state_action_rewards" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.SparseParametricRewardModel.state_rewards">
+<em class="property">property </em><code class="sig-name descname">state_rewards</code><a class="headerlink" href="#stormpy.storage.SparseParametricRewardModel.state_rewards" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.SparseParametricRewardModel.transition_rewards">
+<em class="property">property </em><code class="sig-name descname">transition_rewards</code><a class="headerlink" href="#stormpy.storage.SparseParametricRewardModel.transition_rewards" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="stormpy.storage.SparsePomdp">
+<em class="property">class </em><code class="sig-name descname">SparsePomdp</code><a class="headerlink" href="#stormpy.storage.SparsePomdp" title="Permalink to this definition">¶</a></dt>
+<dd><p>POMDP in sparse representation</p>
+<dl class="method">
+<dt id="stormpy.storage.SparsePomdp.nr_observations">
+<em class="property">property </em><code class="sig-name descname">nr_observations</code><a class="headerlink" href="#stormpy.storage.SparsePomdp.nr_observations" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.SparsePomdp.observations">
+<em class="property">property </em><code class="sig-name descname">observations</code><a class="headerlink" href="#stormpy.storage.SparsePomdp.observations" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="stormpy.storage.SparseRewardModel">
+<em class="property">class </em><code class="sig-name descname">SparseRewardModel</code><a class="headerlink" href="#stormpy.storage.SparseRewardModel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reward structure for sparse models</p>
+<dl class="method">
+<dt id="stormpy.storage.SparseRewardModel.get_state_action_reward">
+<code class="sig-name descname">get_state_action_reward</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.SparseRewardModel.get_state_action_reward" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.SparseRewardModel.get_state_reward">
+<code class="sig-name descname">get_state_reward</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.SparseRewardModel.get_state_reward" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.SparseRewardModel.get_zero_reward_states">
+<code class="sig-name descname">get_zero_reward_states</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.SparseRewardModel.get_zero_reward_states" title="Permalink to this definition">¶</a></dt>
+<dd><p>get states where all rewards are zero</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.SparseRewardModel.has_state_action_rewards">
+<em class="property">property </em><code class="sig-name descname">has_state_action_rewards</code><a class="headerlink" href="#stormpy.storage.SparseRewardModel.has_state_action_rewards" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.SparseRewardModel.has_state_rewards">
+<em class="property">property </em><code class="sig-name descname">has_state_rewards</code><a class="headerlink" href="#stormpy.storage.SparseRewardModel.has_state_rewards" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.SparseRewardModel.has_transition_rewards">
+<em class="property">property </em><code class="sig-name descname">has_transition_rewards</code><a class="headerlink" href="#stormpy.storage.SparseRewardModel.has_transition_rewards" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.SparseRewardModel.reduce_to_state_based_rewards">
+<code class="sig-name descname">reduce_to_state_based_rewards</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.SparseRewardModel.reduce_to_state_based_rewards" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reduce to state-based rewards</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.SparseRewardModel.state_action_rewards">
+<em class="property">property </em><code class="sig-name descname">state_action_rewards</code><a class="headerlink" href="#stormpy.storage.SparseRewardModel.state_action_rewards" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.SparseRewardModel.state_rewards">
+<em class="property">property </em><code class="sig-name descname">state_rewards</code><a class="headerlink" href="#stormpy.storage.SparseRewardModel.state_rewards" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.SparseRewardModel.transition_rewards">
+<em class="property">property </em><code class="sig-name descname">transition_rewards</code><a class="headerlink" href="#stormpy.storage.SparseRewardModel.transition_rewards" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="stormpy.storage.StateGenerator">
+<em class="property">class </em><code class="sig-name descname">StateGenerator</code><a class="headerlink" href="#stormpy.storage.StateGenerator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Interactively explore states using Storm’s PrismNextStateGenerator.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Variables</dt>
+<dd class="field-odd"><p><strong>program</strong> – A PRISM program.</p>
+</dd>
+</dl>
+<dl class="method">
+<dt id="stormpy.storage.StateGenerator.current_state_satisfies">
+<code class="sig-name descname">current_state_satisfies</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.StateGenerator.current_state_satisfies" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if the currently loaded state satisfies the given expression.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>expression</strong> (<a class="reference internal" href="core.html#stormpy.Expression" title="stormpy.Expression"><em>stormpy.Expression</em></a>) – The expression to check against.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)">bool</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.StateGenerator.current_state_to_valuation">
+<code class="sig-name descname">current_state_to_valuation</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.StateGenerator.current_state_to_valuation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a valuation for the currently loaded state.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="core.html#stormpy.ValuationMapping" title="stormpy.ValuationMapping">stormpy.ValuationMapping</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.StateGenerator.expand">
+<code class="sig-name descname">expand</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.StateGenerator.expand" title="Permalink to this definition">¶</a></dt>
+<dd><p>Expand the currently loaded state and return its successors.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>[[(state_id, probability)]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.StateGenerator.load">
+<code class="sig-name descname">load</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.StateGenerator.load" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>state_id</strong> – The ID of the state to load.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.StateGenerator.load_initial_state">
+<code class="sig-name descname">load_initial_state</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.StateGenerator.load_initial_state" title="Permalink to this definition">¶</a></dt>
+<dd><p>Loads the (unique) initial state.
+Multiple initial states are not supported.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>the ID of the initial state.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="stormpy.storage.StateLabeling">
+<em class="property">class </em><code class="sig-name descname">StateLabeling</code><a class="headerlink" href="#stormpy.storage.StateLabeling" title="Permalink to this definition">¶</a></dt>
+<dd><p>Labeling for states</p>
+<dl class="method">
+<dt id="stormpy.storage.StateLabeling.add_label_to_state">
+<code class="sig-name descname">add_label_to_state</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.StateLabeling.add_label_to_state" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add label to state</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.StateLabeling.get_labels_of_state">
+<code class="sig-name descname">get_labels_of_state</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.StateLabeling.get_labels_of_state" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get labels of given state</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.StateLabeling.get_states">
+<code class="sig-name descname">get_states</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.StateLabeling.get_states" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get all states which have the given label</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.StateLabeling.has_state_label">
+<code class="sig-name descname">has_state_label</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.StateLabeling.has_state_label" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if the given state has the given label</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.StateLabeling.set_states">
+<code class="sig-name descname">set_states</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.StateLabeling.set_states" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set all states which have the given label</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="stormpy.storage.StateValuation">
+<em class="property">class </em><code class="sig-name descname">StateValuation</code><a class="headerlink" href="#stormpy.storage.StateValuation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Valuations for explicit states</p>
+<dl class="method">
+<dt id="stormpy.storage.StateValuation.get_state">
+<code class="sig-name descname">get_state</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.StateValuation.get_state" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="stormpy.storage.SymbolicSylvanCtmc">
+<em class="property">class </em><code class="sig-name descname">SymbolicSylvanCtmc</code><a class="headerlink" href="#stormpy.storage.SymbolicSylvanCtmc" title="Permalink to this definition">¶</a></dt>
+<dd><p>CTMC in symbolic representation</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="stormpy.storage.SymbolicSylvanDtmc">
+<em class="property">class </em><code class="sig-name descname">SymbolicSylvanDtmc</code><a class="headerlink" href="#stormpy.storage.SymbolicSylvanDtmc" title="Permalink to this definition">¶</a></dt>
+<dd><p>DTMC in symbolic representation</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="stormpy.storage.SymbolicSylvanMA">
+<em class="property">class </em><code class="sig-name descname">SymbolicSylvanMA</code><a class="headerlink" href="#stormpy.storage.SymbolicSylvanMA" title="Permalink to this definition">¶</a></dt>
+<dd><p>MA in symbolic representation</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="stormpy.storage.SymbolicSylvanMdp">
+<em class="property">class </em><code class="sig-name descname">SymbolicSylvanMdp</code><a class="headerlink" href="#stormpy.storage.SymbolicSylvanMdp" title="Permalink to this definition">¶</a></dt>
+<dd><p>MDP in symbolic representation</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="stormpy.storage.SymbolicSylvanParametricCtmc">
+<em class="property">class </em><code class="sig-name descname">SymbolicSylvanParametricCtmc</code><a class="headerlink" href="#stormpy.storage.SymbolicSylvanParametricCtmc" title="Permalink to this definition">¶</a></dt>
+<dd><p>pCTMC in symbolic representation</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="stormpy.storage.SymbolicSylvanParametricDtmc">
+<em class="property">class </em><code class="sig-name descname">SymbolicSylvanParametricDtmc</code><a class="headerlink" href="#stormpy.storage.SymbolicSylvanParametricDtmc" title="Permalink to this definition">¶</a></dt>
+<dd><p>pDTMC in symbolic representation</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="stormpy.storage.SymbolicSylvanParametricMA">
+<em class="property">class </em><code class="sig-name descname">SymbolicSylvanParametricMA</code><a class="headerlink" href="#stormpy.storage.SymbolicSylvanParametricMA" title="Permalink to this definition">¶</a></dt>
+<dd><p>pMA in symbolic representation</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="stormpy.storage.SymbolicSylvanParametricMdp">
+<em class="property">class </em><code class="sig-name descname">SymbolicSylvanParametricMdp</code><a class="headerlink" href="#stormpy.storage.SymbolicSylvanParametricMdp" title="Permalink to this definition">¶</a></dt>
+<dd><p>pMDP in symbolic representation</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="stormpy.storage.SymbolicSylvanParametricRewardModel">
+<em class="property">class </em><code class="sig-name descname">SymbolicSylvanParametricRewardModel</code><a class="headerlink" href="#stormpy.storage.SymbolicSylvanParametricRewardModel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reward structure for parametric symbolic models</p>
+<dl class="method">
+<dt id="stormpy.storage.SymbolicSylvanParametricRewardModel.has_state_action_rewards">
+<em class="property">property </em><code class="sig-name descname">has_state_action_rewards</code><a class="headerlink" href="#stormpy.storage.SymbolicSylvanParametricRewardModel.has_state_action_rewards" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.SymbolicSylvanParametricRewardModel.has_state_rewards">
+<em class="property">property </em><code class="sig-name descname">has_state_rewards</code><a class="headerlink" href="#stormpy.storage.SymbolicSylvanParametricRewardModel.has_state_rewards" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.SymbolicSylvanParametricRewardModel.has_transition_rewards">
+<em class="property">property </em><code class="sig-name descname">has_transition_rewards</code><a class="headerlink" href="#stormpy.storage.SymbolicSylvanParametricRewardModel.has_transition_rewards" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="stormpy.storage.SymbolicSylvanRewardModel">
+<em class="property">class </em><code class="sig-name descname">SymbolicSylvanRewardModel</code><a class="headerlink" href="#stormpy.storage.SymbolicSylvanRewardModel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reward structure for symbolic models</p>
+<dl class="method">
+<dt id="stormpy.storage.SymbolicSylvanRewardModel.has_state_action_rewards">
+<em class="property">property </em><code class="sig-name descname">has_state_action_rewards</code><a class="headerlink" href="#stormpy.storage.SymbolicSylvanRewardModel.has_state_action_rewards" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.SymbolicSylvanRewardModel.has_state_rewards">
+<em class="property">property </em><code class="sig-name descname">has_state_rewards</code><a class="headerlink" href="#stormpy.storage.SymbolicSylvanRewardModel.has_state_rewards" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.SymbolicSylvanRewardModel.has_transition_rewards">
+<em class="property">property </em><code class="sig-name descname">has_transition_rewards</code><a class="headerlink" href="#stormpy.storage.SymbolicSylvanRewardModel.has_transition_rewards" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="stormpy.storage.ValuationMapping">
+<em class="property">class </em><code class="sig-name descname">ValuationMapping</code><a class="headerlink" href="#stormpy.storage.ValuationMapping" title="Permalink to this definition">¶</a></dt>
+<dd><p>A valuation mapping for a state consists of a mapping from variable to value for each of the three types.</p>
+<dl class="method">
+<dt id="stormpy.storage.ValuationMapping.boolean_values">
+<em class="property">property </em><code class="sig-name descname">boolean_values</code><a class="headerlink" href="#stormpy.storage.ValuationMapping.boolean_values" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.ValuationMapping.integer_values">
+<em class="property">property </em><code class="sig-name descname">integer_values</code><a class="headerlink" href="#stormpy.storage.ValuationMapping.integer_values" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.ValuationMapping.rational_values">
+<em class="property">property </em><code class="sig-name descname">rational_values</code><a class="headerlink" href="#stormpy.storage.ValuationMapping.rational_values" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="stormpy.storage.Variable">
+<em class="property">class </em><code class="sig-name descname">Variable</code><a class="headerlink" href="#stormpy.storage.Variable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Represents a variable</p>
+<dl class="method">
+<dt id="stormpy.storage.Variable.get_expression">
+<code class="sig-name descname">get_expression</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.Variable.get_expression" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get expression from variable</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.Variable.has_bitvector_type">
+<code class="sig-name descname">has_bitvector_type</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.Variable.has_bitvector_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if the variable is of bitvector type</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.Variable.has_boolean_type">
+<code class="sig-name descname">has_boolean_type</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.Variable.has_boolean_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if the variable is of boolean type</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.Variable.has_integer_type">
+<code class="sig-name descname">has_integer_type</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.Variable.has_integer_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if the variable is of integer type</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.Variable.has_numerical_type">
+<code class="sig-name descname">has_numerical_type</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.Variable.has_numerical_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if the variable is of numerical type</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.Variable.has_rational_type">
+<code class="sig-name descname">has_rational_type</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.Variable.has_rational_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if the variable is of rational type</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="stormpy.storage.Variable.name">
+<em class="property">property </em><code class="sig-name descname">name</code><a class="headerlink" href="#stormpy.storage.Variable.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Variable name</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="stormpy.storage.eliminate_reward_accumulations">
+<code class="sig-name descname">eliminate_reward_accumulations</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stormpy.storage.eliminate_reward_accumulations" title="Permalink to this definition">¶</a></dt>
+<dd><p>Eliminate reward accumulations</p>
+</dd></dl>
+
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+        <br/>
+        
+<div id="sourcelink">
+  <a href="../_sources/api/storage.rst.txt"
+     rel="nofollow">Source</a>
+</div>
+      
+    </p>
+    <p>
+        &copy; Copyright 2016-2019 Moves RWTH Aachen.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.2.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

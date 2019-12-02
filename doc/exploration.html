@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Exploring Models &#8212; stormpy 1.3.0 documentation</title>
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Reward Models" href="reward_models.html" />
+    <link rel="prev" title="Engines" href="engines.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js "></script>
+<script type="text/javascript" src="../_static/js/jquery-fix.js "></script>
+<script type="text/javascript" src="../_static/bootstrap-3.3.7/js/bootstrap.min.js "></script>
+<script type="text/javascript" src="../_static/bootstrap-sphinx.js "></script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-inverse navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html">
+          Stormpy</a>
+        <span class="navbar-text navbar-version pull-left"><b>1.3.0</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+                <li><a href="http://stormchecker.org">Storm</a></li>
+                <li><a href="https://github.com/moves-rwth/stormpy">Github</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../index.html">Stormpy <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../installation.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation.html#installation-steps">Installation Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started.html">Getting Started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started.html#a-quick-tour-through-stormpy">A Quick Tour through Stormpy</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../advanced_topics.html">Advanced Examples</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="analysis.html">Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="building_models.html">Building Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="engines.html">Engines</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Exploring Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reward_models.html">Reward Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="schedulers.html">Working with Schedulers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="shortest_paths.html">Working with Shortest Paths</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parametric_models.html">Parametric Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dfts.html">Dynamic Fault Trees</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../contributors.html">Contributors</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Modules:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../api/core.html">Stormpy.core</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/info.html">Stormpy.info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/exceptions.html">Stormpy.exceptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/logic.html">Stormpy.logic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/storage.html">Stormpy.storage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/utility.html">Stormpy.utility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/dft.html">Stormpy.dft</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/pars.html">Stormpy.pars</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">Exploring Models</a><ul>
+<li><a class="reference internal" href="#background">Background</a></li>
+<li><a class="reference internal" href="#reading-mdps">Reading MDPs</a></li>
+<li><a class="reference internal" href="#reading-pomdps">Reading POMDPs</a></li>
+<li><a class="reference internal" href="#sorting-states">Sorting states</a></li>
+<li><a class="reference internal" href="#reading-mas">Reading MAs</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="engines.html" title="Previous Chapter: Engines"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Engines</span>
+    </a>
+  </li>
+  <li>
+    <a href="reward_models.html" title="Next Chapter: Reward Models"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Reward Models &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="body col-md-12 content" role="main">
+      
+  <div class="section" id="exploring-models">
+<h1>Exploring Models<a class="headerlink" href="#exploring-models" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="background">
+<h2>Background<a class="headerlink" href="#background" title="Permalink to this headline">¶</a></h2>
+<p>Often, stormpy is used as a testbed for new algorithms.
+An essential step is to transfer the (low-level) descriptions of an MDP or other state-based model into
+an own algorithm. In this section, we discuss some of the functionality.</p>
+</div>
+<div class="section" id="reading-mdps">
+<h2>Reading MDPs<a class="headerlink" href="#reading-mdps" title="Permalink to this headline">¶</a></h2>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference external" href="https://github.com/moves-rwth/stormpy/blob/master/examples/exploration/01-exploration.py">01-exploration.py</a></p>
+</div>
+<p>In <a class="reference internal" href="../getting_started.html"><span class="doc">Getting Started</span></a>, we briefly iterated over a DTMC. In this section, we explore an MDP:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">doctest</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">doctest</span><span class="o">.</span><span class="n">ELLIPSIS_MARKER</span> <span class="o">=</span> <span class="s1">&#39;-etc-&#39;</span> 
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">stormpy</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">stormpy.examples</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">stormpy.examples.files</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">program</span> <span class="o">=</span> <span class="n">stormpy</span><span class="o">.</span><span class="n">parse_prism_program</span><span class="p">(</span><span class="n">stormpy</span><span class="o">.</span><span class="n">examples</span><span class="o">.</span><span class="n">files</span><span class="o">.</span><span class="n">prism_mdp_maze</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span> <span class="o">=</span> <span class="s2">&quot;R=? [F </span><span class="se">\&quot;</span><span class="s2">goal</span><span class="se">\&quot;</span><span class="s2">]&quot;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">properties</span> <span class="o">=</span> <span class="n">stormpy</span><span class="o">.</span><span class="n">parse_properties_for_prism_program</span><span class="p">(</span><span class="n">prop</span><span class="p">,</span> <span class="n">program</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">model</span> <span class="o">=</span> <span class="n">stormpy</span><span class="o">.</span><span class="n">build_model</span><span class="p">(</span><span class="n">program</span><span class="p">,</span> <span class="n">properties</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The iteration over the model is as before, but now, for every action, we can have several transitions:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">state</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">states</span><span class="p">:</span>
+<span class="gp">... </span>   <span class="k">if</span> <span class="n">state</span><span class="o">.</span><span class="n">id</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">initial_states</span><span class="p">:</span>
+<span class="gp">... </span>       <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;State </span><span class="si">{}</span><span class="s2"> is initial&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">state</span><span class="o">.</span><span class="n">id</span><span class="p">))</span>
+<span class="gp">... </span>   <span class="k">for</span> <span class="n">action</span> <span class="ow">in</span> <span class="n">state</span><span class="o">.</span><span class="n">actions</span><span class="p">:</span>
+<span class="gp">... </span>       <span class="k">for</span> <span class="n">transition</span> <span class="ow">in</span> <span class="n">action</span><span class="o">.</span><span class="n">transitions</span><span class="p">:</span>
+<span class="gp">... </span>           <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;From state </span><span class="si">{}</span><span class="s2"> by action </span><span class="si">{}</span><span class="s2">, with probability </span><span class="si">{}</span><span class="s2">, go to state </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">action</span><span class="p">,</span> <span class="n">transition</span><span class="o">.</span><span class="n">value</span><span class="p">(),</span> <span class="n">transition</span><span class="o">.</span><span class="n">column</span><span class="p">))</span>
+<span class="go">-etc-</span>
+</pre></div>
+</div>
+<p>The output (omitted for brievety) contains sentences like:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">From</span> <span class="n">state</span> <span class="mi">1</span> <span class="n">by</span> <span class="n">action</span> <span class="mi">0</span><span class="p">,</span> <span class="k">with</span> <span class="n">probability</span> <span class="mf">1.0</span><span class="p">,</span> <span class="n">go</span> <span class="n">to</span> <span class="n">state</span> <span class="mi">2</span>
+<span class="n">From</span> <span class="n">state</span> <span class="mi">1</span> <span class="n">by</span> <span class="n">action</span> <span class="mi">1</span><span class="p">,</span> <span class="k">with</span> <span class="n">probability</span> <span class="mf">1.0</span><span class="p">,</span> <span class="n">go</span> <span class="n">to</span> <span class="n">state</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p>Internally, storm can hold hints to the origin of the actions, which may be helpful to give meaning and for debugging.
+As the availability and the encoding of this data depends on the input model, we discuss these features in <span class="xref std std-doc">highlevel_models</span>.</p>
+<p>Storm currently supports deterministic rewards on states or actions. More information can be found in <a class="reference internal" href="reward_models.html"><span class="doc">Reward Models</span></a>.</p>
+</div>
+<div class="section" id="reading-pomdps">
+<h2>Reading POMDPs<a class="headerlink" href="#reading-pomdps" title="Permalink to this headline">¶</a></h2>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference external" href="https://github.com/moves-rwth/stormpy/blob/master/examples/exploration/02-exploration.py">02-exploration.py</a></p>
+</div>
+<p>Internally, POMDPs extend MDPs. Thus, iterating over the MDP is done as before.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">stormpy</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">stormpy.examples</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">stormpy.examples.files</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">program</span> <span class="o">=</span> <span class="n">stormpy</span><span class="o">.</span><span class="n">parse_prism_program</span><span class="p">(</span><span class="n">stormpy</span><span class="o">.</span><span class="n">examples</span><span class="o">.</span><span class="n">files</span><span class="o">.</span><span class="n">prism_pomdp_maze</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prop</span> <span class="o">=</span> <span class="s2">&quot;R=? [F </span><span class="se">\&quot;</span><span class="s2">goal</span><span class="se">\&quot;</span><span class="s2">]&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">properties</span> <span class="o">=</span> <span class="n">stormpy</span><span class="o">.</span><span class="n">parse_properties_for_prism_program</span><span class="p">(</span><span class="n">prop</span><span class="p">,</span> <span class="n">program</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">model</span> <span class="o">=</span> <span class="n">stormpy</span><span class="o">.</span><span class="n">build_model</span><span class="p">(</span><span class="n">program</span><span class="p">,</span> <span class="n">properties</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Indeed, all that changed in the code above is the example we use.
+And, that the model type now is a POMDP:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">model_type</span><span class="p">)</span>
+<span class="go">ModelType.POMDP</span>
+</pre></div>
+</div>
+<p>Additionally, POMDPs have a set of observations, which are internally just numbered by an integer from 0 to the number of observations -1</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">nr_observations</span><span class="p">)</span>
+<span class="go">8</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">state</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">states</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;State </span><span class="si">{}</span><span class="s2"> has observation id </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">state</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">observations</span><span class="p">[</span><span class="n">state</span><span class="o">.</span><span class="n">id</span><span class="p">]))</span>
+<span class="go">State 0 has observation id 6</span>
+<span class="go">State 1 has observation id 1</span>
+<span class="go">State 2 has observation id 4</span>
+<span class="go">State 3 has observation id 7</span>
+<span class="go">State 4 has observation id 4</span>
+<span class="go">State 5 has observation id 3</span>
+<span class="go">State 6 has observation id 0</span>
+<span class="go">State 7 has observation id 0</span>
+<span class="go">State 8 has observation id 0</span>
+<span class="go">State 9 has observation id 0</span>
+<span class="go">State 10 has observation id 0</span>
+<span class="go">State 11 has observation id 0</span>
+<span class="go">State 12 has observation id 2</span>
+<span class="go">State 13 has observation id 2</span>
+<span class="go">State 14 has observation id 4</span>
+<span class="go">State 15 has observation id 5</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="sorting-states">
+<h2>Sorting states<a class="headerlink" href="#sorting-states" title="Permalink to this headline">¶</a></h2>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference external" href="https://github.com/moves-rwth/stormpy/blob/master/examples/exploration/03-exploration.py">03-exploration.py</a></p>
+</div>
+<p>Often, one may sort the states according to the graph structure.
+Storm supports some of these sorting algorithms, e.g., topological sort.</p>
+</div>
+<div class="section" id="reading-mas">
+<h2>Reading MAs<a class="headerlink" href="#reading-mas" title="Permalink to this headline">¶</a></h2>
+<p>To be continued…</p>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+        <br/>
+        
+<div id="sourcelink">
+  <a href="../_sources/doc/exploration.rst.txt"
+     rel="nofollow">Source</a>
+</div>
+      
+    </p>
+    <p>
+        &copy; Copyright 2016-2019 Moves RWTH Aachen.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.2.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

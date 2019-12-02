@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Getting Started &#8212; stormpy 1.3.0 documentation</title>
+    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Advanced Examples" href="advanced_topics.html" />
+    <link rel="prev" title="Installation" href="installation.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="_static/js/jquery-1.11.0.min.js "></script>
+<script type="text/javascript" src="_static/js/jquery-fix.js "></script>
+<script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js "></script>
+<script type="text/javascript" src="_static/bootstrap-sphinx.js "></script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-inverse navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="index.html">
+          Stormpy</a>
+        <span class="navbar-text navbar-version pull-left"><b>1.3.0</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+                <li><a href="http://stormchecker.org">Storm</a></li>
+                <li><a href="https://github.com/moves-rwth/stormpy">Github</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="index.html">Stormpy <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#installation-steps">Installation Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Getting Started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#a-quick-tour-through-stormpy">A Quick Tour through Stormpy</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="advanced_topics.html">Advanced Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="doc/analysis.html">Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc/building_models.html">Building Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc/engines.html">Engines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc/exploration.html">Exploring Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc/reward_models.html">Reward Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc/schedulers.html">Working with Schedulers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc/shortest_paths.html">Working with Shortest Paths</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc/parametric_models.html">Parametric Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc/dfts.html">Dynamic Fault Trees</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="contributors.html">Contributors</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Modules:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="api/core.html">Stormpy.core</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/info.html">Stormpy.info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/exceptions.html">Stormpy.exceptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/logic.html">Stormpy.logic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/storage.html">Stormpy.storage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/utility.html">Stormpy.utility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/dft.html">Stormpy.dft</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/pars.html">Stormpy.pars</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">Getting Started</a><ul>
+<li><a class="reference internal" href="#a-quick-tour-through-stormpy">A Quick Tour through Stormpy</a><ul>
+<li><a class="reference internal" href="#building-models">Building models</a></li>
+<li><a class="reference internal" href="#building-properties">Building properties</a></li>
+<li><a class="reference internal" href="#checking-properties">Checking properties</a></li>
+<li><a class="reference internal" href="#investigating-the-model">Investigating the model</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="installation.html" title="Previous Chapter: Installation"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Installation</span>
+    </a>
+  </li>
+  <li>
+    <a href="advanced_topics.html" title="Next Chapter: Advanced Examples"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Advanced Examples &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="body col-md-12 content" role="main">
+      
+  <div class="section" id="getting-started">
+<h1>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h1>
+<p>Before starting with this guide, one should follow the instructions for <a class="reference internal" href="installation.html"><span class="doc">Installation</span></a>.</p>
+<div class="section" id="a-quick-tour-through-stormpy">
+<h2>A Quick Tour through Stormpy<a class="headerlink" href="#a-quick-tour-through-stormpy" title="Permalink to this headline">¶</a></h2>
+<p>This guide is intended for people which have a basic understanding of probabilistic models and their verification. More details and further pointers to literature can be found on the
+<a class="reference external" href="http://www.stormchecker.org/">Storm website</a>.
+While we assume some very basic programming concepts, we refrain from using more advanced concepts of python throughout the guide.</p>
+<p>We start with a selection of high-level constructs in stormpy, and go into more details afterwards. More in-depth examples can be found in the <a class="reference internal" href="advanced_topics.html"><span class="doc">Advanced Examples</span></a>.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>The code examples are also given in the <a class="reference external" href="https://github.com/moves-rwth/stormpy/blob/master/examples/">examples/</a> folder. These boxes throughout the text will tell you which example contains the code discussed.</p>
+</div>
+<p>We start by launching the python 3 interpreter:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ python3
+</pre></div>
+</div>
+<p>First we import stormpy:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">stormpy</span>
+</pre></div>
+</div>
+<div class="section" id="building-models">
+<h3>Building models<a class="headerlink" href="#building-models" title="Permalink to this headline">¶</a></h3>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference external" href="https://github.com/moves-rwth/stormpy/blob/master/examples/01-getting-started.py">01-getting-started.py</a></p>
+</div>
+<p>There are several ways to create a Markov chain.
+One of the easiest is to parse a description of such a Markov chain and to let Storm build the chain.</p>
+<p>Here, we build a Markov chain from a prism program.
+Stormpy comes with a small set of examples, which we use here:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">stormpy.examples</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">stormpy.examples.files</span>
+</pre></div>
+</div>
+<p>With this, we can now import the path of our prism file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">path</span> <span class="o">=</span> <span class="n">stormpy</span><span class="o">.</span><span class="n">examples</span><span class="o">.</span><span class="n">files</span><span class="o">.</span><span class="n">prism_dtmc_die</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prism_program</span> <span class="o">=</span> <span class="n">stormpy</span><span class="o">.</span><span class="n">parse_prism_program</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">prism_program</span></code> can be translated into a Markov chain:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">model</span> <span class="o">=</span> <span class="n">stormpy</span><span class="o">.</span><span class="n">build_model</span><span class="p">(</span><span class="n">prism_program</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number of states: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">nr_states</span><span class="p">))</span>
+<span class="go">Number of states: 13</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number of transitions: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">nr_transitions</span><span class="p">))</span>
+<span class="go">Number of transitions: 20</span>
+</pre></div>
+</div>
+<p>This tells us that the model has 13 states and 20 transitions.</p>
+<p>Moreover, initial states and deadlocks are indicated with a labelling function. We can see the labels present in the model by:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Labels: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">labeling</span><span class="o">.</span><span class="n">get_labels</span><span class="p">()))</span>
+<span class="go">Labels: ...</span>
+</pre></div>
+</div>
+<p>We will investigate ways to examine the model in more detail later in <a class="reference internal" href="#getting-started-investigating-the-model"><span class="std std-ref">Investigating the model</span></a>.</p>
+</div>
+<div class="section" id="building-properties">
+<span id="getting-started-building-properties"></span><h3>Building properties<a class="headerlink" href="#building-properties" title="Permalink to this headline">¶</a></h3>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference external" href="https://github.com/moves-rwth/stormpy/blob/master/examples/02-getting-started.py">02-getting-started.py</a></p>
+</div>
+<p>Storm takes properties in the prism-property format.
+To express that one is interested in the reachability of any state where the prism program variable <code class="docutils literal notranslate"><span class="pre">s</span></code> is 2, one would formulate:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>P=? [F s=2]
+</pre></div>
+</div>
+<p>Stormpy can be used to parse this. As the variables in the property refer to a program, the program has to be passed as an additional parameter:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">formula_str</span> <span class="o">=</span> <span class="s2">&quot;P=? [F s=2]&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">properties</span> <span class="o">=</span> <span class="n">stormpy</span><span class="o">.</span><span class="n">parse_properties</span><span class="p">(</span><span class="n">formula_str</span><span class="p">,</span> <span class="n">prism_program</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Notice that properties is now a list of properties containing a single element.</p>
+<p>However, if we build the model as before, then the appropriate information that the variable <code class="docutils literal notranslate"><span class="pre">s=2</span></code> in some states is not present.
+In order to label the states accordingly, we should notify Storm upon building the model that we would like to preserve given properties.
+Storm will then add the labels accordingly:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">model</span> <span class="o">=</span> <span class="n">stormpy</span><span class="o">.</span><span class="n">build_model</span><span class="p">(</span><span class="n">prism_program</span><span class="p">,</span> <span class="n">properties</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Labels in the model: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">labeling</span><span class="o">.</span><span class="n">get_labels</span><span class="p">())))</span>
+<span class="go">Labels in the model: [&#39;(s = 2)&#39;, &#39;deadlock&#39;, &#39;init&#39;]</span>
+</pre></div>
+</div>
+<p>Model building however now behaves slightly different: Only the properties passed are preserved, which means that model building might skip parts of the model.
+In particular, to check the probability of eventually reaching a state <code class="docutils literal notranslate"><span class="pre">x</span></code> where <code class="docutils literal notranslate"><span class="pre">s=2</span></code>, successor states of <code class="docutils literal notranslate"><span class="pre">x</span></code> are not relevant:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number of states: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">nr_states</span><span class="p">))</span>
+<span class="go">Number of states: 8</span>
+</pre></div>
+</div>
+<p>If we consider another property, however, such as:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>P=? [F s=7 &amp; d=2]
+</pre></div>
+</div>
+<p>then Storm is only skipping exploration of successors of the particular state <code class="docutils literal notranslate"><span class="pre">y</span></code> where <code class="docutils literal notranslate"><span class="pre">s=7</span></code> and <code class="docutils literal notranslate"><span class="pre">d=2</span></code>. In this model, state <code class="docutils literal notranslate"><span class="pre">y</span></code> has a self-loop, so effectively, the whole model is explored.</p>
+</div>
+<div class="section" id="checking-properties">
+<span id="getting-started-checking-properties"></span><h3>Checking properties<a class="headerlink" href="#checking-properties" title="Permalink to this headline">¶</a></h3>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference external" href="https://github.com/moves-rwth/stormpy/blob/master/examples/03-getting-started.py">03-getting-started.py</a></p>
+</div>
+<p>The last lesson taught us to construct properties and models with matching state labels.
+Now default checking routines are just a simple command away:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">properties</span> <span class="o">=</span> <span class="n">stormpy</span><span class="o">.</span><span class="n">parse_properties</span><span class="p">(</span><span class="n">formula_str</span><span class="p">,</span> <span class="n">prism_program</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">model</span> <span class="o">=</span> <span class="n">stormpy</span><span class="o">.</span><span class="n">build_model</span><span class="p">(</span><span class="n">prism_program</span><span class="p">,</span> <span class="n">properties</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">result</span> <span class="o">=</span> <span class="n">stormpy</span><span class="o">.</span><span class="n">model_checking</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">properties</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>The result may contain information about all states.
+Instead, we can iterate over the results:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">assert</span> <span class="n">result</span><span class="o">.</span><span class="n">result_for_all_states</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">result</span><span class="o">.</span><span class="n">get_values</span><span class="p">():</span>
+<span class="gp">... </span>   <span class="k">pass</span> <span class="c1"># do something with x</span>
+</pre></div>
+</div>
+<div class="topic">
+<p class="topic-title first">Results for all states</p>
+<p>Some model checking algorithms do not provide results for all states. In those cases, the result is not valid for all states, and to iterate over them, a different method is required. We will explain this later.</p>
+</div>
+<p>A good way to get the result for the initial states is as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">initial_state</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">initial_states</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">at</span><span class="p">(</span><span class="n">initial_state</span><span class="p">))</span>
+<span class="go">0.5</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="investigating-the-model">
+<span id="getting-started-investigating-the-model"></span><h3>Investigating the model<a class="headerlink" href="#investigating-the-model" title="Permalink to this headline">¶</a></h3>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference external" href="https://github.com/moves-rwth/stormpy/blob/master/examples/04-getting-started.py">04-getting-started.py</a></p>
+</div>
+<p>One powerful part of the Storm model checker is to quickly create the Markov chain from higher-order descriptions, as seen above:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">path</span> <span class="o">=</span> <span class="n">stormpy</span><span class="o">.</span><span class="n">examples</span><span class="o">.</span><span class="n">files</span><span class="o">.</span><span class="n">prism_dtmc_die</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prism_program</span> <span class="o">=</span> <span class="n">stormpy</span><span class="o">.</span><span class="n">parse_prism_program</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">model</span> <span class="o">=</span> <span class="n">stormpy</span><span class="o">.</span><span class="n">build_model</span><span class="p">(</span><span class="n">prism_program</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>In this example, we will exploit this, and explore the underlying Markov chain of the model.
+The most basic question might be what the type of the constructed model is:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">model_type</span><span class="p">)</span>
+<span class="go">ModelType.DTMC</span>
+</pre></div>
+</div>
+<p>We can also directly explore the underlying state space/matrix.
+Notice that this code can be applied to both deterministic and non-deterministic models:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">state</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">states</span><span class="p">:</span>
+<span class="gp">... </span>   <span class="k">for</span> <span class="n">action</span> <span class="ow">in</span> <span class="n">state</span><span class="o">.</span><span class="n">actions</span><span class="p">:</span>
+<span class="gp">... </span>       <span class="k">for</span> <span class="n">transition</span> <span class="ow">in</span> <span class="n">action</span><span class="o">.</span><span class="n">transitions</span><span class="p">:</span>
+<span class="gp">... </span>           <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;From state </span><span class="si">{}</span><span class="s2">, with probability </span><span class="si">{}</span><span class="s2">, go to state </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">transition</span><span class="o">.</span><span class="n">value</span><span class="p">(),</span> <span class="n">transition</span><span class="o">.</span><span class="n">column</span><span class="p">))</span>
+<span class="go">From state 0, with probability 0.5, go to state 1</span>
+<span class="go">From state 0, with probability 0.5, go to state 2</span>
+<span class="go">From state 1, with probability 0.5, go to state 3</span>
+<span class="go">From state 1, with probability 0.5, go to state 4</span>
+<span class="go">From state 2, with probability 0.5, go to state 5</span>
+<span class="go">From state 2, with probability 0.5, go to state 6</span>
+<span class="go">From state 3, with probability 0.5, go to state 1</span>
+<span class="go">From state 3, with probability 0.5, go to state 7</span>
+<span class="go">From state 4, with probability 0.5, go to state 8</span>
+<span class="go">From state 4, with probability 0.5, go to state 9</span>
+<span class="go">From state 5, with probability 0.5, go to state 10</span>
+<span class="go">From state 5, with probability 0.5, go to state 11</span>
+<span class="go">From state 6, with probability 0.5, go to state 2</span>
+<span class="go">From state 6, with probability 0.5, go to state 12</span>
+<span class="go">From state 7, with probability 1.0, go to state 7</span>
+<span class="go">From state 8, with probability 1.0, go to state 8</span>
+<span class="go">From state 9, with probability 1.0, go to state 9</span>
+<span class="go">From state 10, with probability 1.0, go to state 10</span>
+<span class="go">From state 11, with probability 1.0, go to state 11</span>
+<span class="go">From state 12, with probability 1.0, go to state 12</span>
+</pre></div>
+</div>
+<p>Let us go into some more details. For DTMCs, each state has (at most) one outgoing probability distribution.
+Thus:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">state</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">states</span><span class="p">:</span>
+<span class="gp">... </span>   <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">state</span><span class="o">.</span><span class="n">actions</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p>We can also check if a state is indeed an initial state. Notice that <code class="docutils literal notranslate"><span class="pre">model.initial_states</span></code> contains state ids, not states.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">state</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">states</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="k">if</span> <span class="n">state</span><span class="o">.</span><span class="n">id</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">initial_states</span><span class="p">:</span>
+<span class="gp">... </span>        <span class="k">pass</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+        <br/>
+        
+<div id="sourcelink">
+  <a href="_sources/getting_started.rst.txt"
+     rel="nofollow">Source</a>
+</div>
+      
+    </p>
+    <p>
+        &copy; Copyright 2016-2019 Moves RWTH Aachen.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.2.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

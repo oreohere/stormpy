@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Working with Shortest Paths &#8212; stormpy 1.3.0 documentation</title>
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Parametric Models" href="parametric_models.html" />
+    <link rel="prev" title="Working with Schedulers" href="schedulers.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js "></script>
+<script type="text/javascript" src="../_static/js/jquery-fix.js "></script>
+<script type="text/javascript" src="../_static/bootstrap-3.3.7/js/bootstrap.min.js "></script>
+<script type="text/javascript" src="../_static/bootstrap-sphinx.js "></script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-inverse navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html">
+          Stormpy</a>
+        <span class="navbar-text navbar-version pull-left"><b>1.3.0</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+                <li><a href="http://stormchecker.org">Storm</a></li>
+                <li><a href="https://github.com/moves-rwth/stormpy">Github</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../index.html">Stormpy <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../installation.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation.html#installation-steps">Installation Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started.html">Getting Started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started.html#a-quick-tour-through-stormpy">A Quick Tour through Stormpy</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../advanced_topics.html">Advanced Examples</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="analysis.html">Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="building_models.html">Building Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="engines.html">Engines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="exploration.html">Exploring Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reward_models.html">Reward Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="schedulers.html">Working with Schedulers</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Working with Shortest Paths</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parametric_models.html">Parametric Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dfts.html">Dynamic Fault Trees</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../contributors.html">Contributors</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Modules:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../api/core.html">Stormpy.core</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/info.html">Stormpy.info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/exceptions.html">Stormpy.exceptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/logic.html">Stormpy.logic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/storage.html">Stormpy.storage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/utility.html">Stormpy.utility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/dft.html">Stormpy.dft</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/pars.html">Stormpy.pars</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">Working with Shortest Paths</a><ul>
+<li><a class="reference internal" href="#background">Background</a></li>
+<li><a class="reference internal" href="#examining-shortest-paths">Examining Shortest Paths</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="schedulers.html" title="Previous Chapter: Working with Schedulers"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Working with ...</span>
+    </a>
+  </li>
+  <li>
+    <a href="parametric_models.html" title="Next Chapter: Parametric Models"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Parametric Models &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="body col-md-12 content" role="main">
+      
+  <div class="section" id="working-with-shortest-paths">
+<h1>Working with Shortest Paths<a class="headerlink" href="#working-with-shortest-paths" title="Permalink to this headline">¶</a></h1>
+<p>Storm can enumerate the most probable paths of a model, leading from the initial state to a defined set of target states, which we refer to as shortest paths.
+In particular, the model states visited along those paths are available as sets and can be accumulated, yielding a <em>sub-model</em>.</p>
+<div class="section" id="background">
+<h2>Background<a class="headerlink" href="#background" title="Permalink to this headline">¶</a></h2>
+<p>The underlying implementation uses the <em>recursive enumeration algorithm</em> <a class="reference internal" href="#jm1999" id="id1"><span>[JM1999]</span></a>, substituting distance for probability – which is why we refer to the most probable paths as the <em>shortest</em> paths.</p>
+<p>This algorithm computes the shortest paths recursively and in order, i.e., to find the 7th shortest path, the 1st through 6th shortest paths are computed as precursors. The next (i.e., 8th shortest) path can then be computed efficiently.</p>
+<p>It is crucial to note that <em>any</em> path is eligible, including those that (repeatedly) traverse loops (i.e., <em>non-simple</em> paths). This is a common case in practice: Often a large number of similar paths that differ only in the order and number of loop traversals occur successively in the sequence of shortest paths. (For applications that are only interested in simple paths, this is rather unfortunate.)</p>
+</div>
+<div class="section" id="examining-shortest-paths">
+<h2>Examining Shortest Paths<a class="headerlink" href="#examining-shortest-paths" title="Permalink to this headline">¶</a></h2>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference external" href="https://github.com/moves-rwth/stormpy/blob/master/examples/shortest_paths/01-shortest-paths.py">01-shortest-paths.py</a></p>
+</div>
+<p>As in <a class="reference internal" href="../getting_started.html"><span class="doc">Getting Started</span></a>, we import some required modules and build a model from the example files:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">stormpy.examples</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">stormpy.examples.files</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">path</span> <span class="o">=</span> <span class="n">stormpy</span><span class="o">.</span><span class="n">examples</span><span class="o">.</span><span class="n">files</span><span class="o">.</span><span class="n">prism_dtmc_die</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prism_program</span> <span class="o">=</span> <span class="n">stormpy</span><span class="o">.</span><span class="n">parse_prism_program</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">model</span> <span class="o">=</span> <span class="n">stormpy</span><span class="o">.</span><span class="n">build_model</span><span class="p">(</span><span class="n">prism_program</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>We also import the <code class="docutils literal notranslate"><span class="pre">ShortestPathsGenerator</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">stormpy.utility</span> <span class="kn">import</span> <span class="n">ShortestPathsGenerator</span>
+</pre></div>
+</div>
+<p>and choose a target state (by its ID) to which we want to compute the shortest paths:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">state_id</span> <span class="o">=</span> <span class="mi">8</span>
+</pre></div>
+</div>
+<p>It is also possible to specify a set of target states (as a list, e.g., <code class="docutils literal notranslate"><span class="pre">[8,</span> <span class="pre">10,</span> <span class="pre">11]</span></code>) or a label in the model if applicable (e.g., <code class="docutils literal notranslate"><span class="pre">&quot;observe0Greater1&quot;</span></code>).
+For simplicity, we will stick to using a single state for now.</p>
+<p>We initialize a <code class="docutils literal notranslate"><span class="pre">ShortestPathsGenerator</span></code> instance:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">spg</span> <span class="o">=</span> <span class="n">ShortestPathsGenerator</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">state_id</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Now we can query the <cite>k</cite>-shortest path by index. Note that 1-based indices are used, so that the 3rd shortest path indeed corresponds to index <code class="docutils literal notranslate"><span class="pre">k=3</span></code>.
+Let us inspect the first three shortest paths:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="n">path</span> <span class="o">=</span> <span class="n">spg</span><span class="o">.</span><span class="n">get_path_as_list</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="n">distance</span> <span class="o">=</span> <span class="n">spg</span><span class="o">.</span><span class="n">get_distance</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2">-shortest path to state #</span><span class="si">{}</span><span class="s2">: </span><span class="si">{}</span><span class="s2">, with distance </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">state_id</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">distance</span><span class="p">))</span>
+<span class="go">1-shortest path to state #8: [8, 4, 1, 0], with distance 0.125</span>
+<span class="go">2-shortest path to state #8: [8, 4, 1, 3, 1, 0], with distance 0.03125</span>
+<span class="go">3-shortest path to state #8: [8, 4, 1, 3, 1, 3, 1, 0], with distance 0.0078125</span>
+</pre></div>
+</div>
+<p>As you can see, the distance (i.e., probability of the path) is also available.
+Note that the paths are displayed as a backward-traversal from the target to the initial state.</p>
+<dl class="citation">
+<dt class="label" id="jm1999"><span class="brackets"><a class="fn-backref" href="#id1">JM1999</a></span></dt>
+<dd><p>Víctor M. Jiménez, Andrés Marzal. <a class="reference external" href="https://scholar.google.com/scholar?q=Computing+the+k+shortest+paths%3A+A+new+algorithm+and+an+experimental+comparison">Computing the K Shortest Paths: A New Algorithm and an Experimental Comparison</a>. International Workshop on Algorithm Engineering, 1999</p>
+</dd>
+</dl>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+        <br/>
+        
+<div id="sourcelink">
+  <a href="../_sources/doc/shortest_paths.rst.txt"
+     rel="nofollow">Source</a>
+</div>
+      
+    </p>
+    <p>
+        &copy; Copyright 2016-2019 Moves RWTH Aachen.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.2.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>
